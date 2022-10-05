@@ -1,9 +1,10 @@
 import './App.css';
+import Navigation from './components/Navigation/Navigation';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Start</h1>
+    <div className="App px-72">
+      <Navigation />
     </div>
   );
 }
