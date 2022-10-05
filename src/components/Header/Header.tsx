@@ -5,7 +5,7 @@ import Input from './Input';
 const Header = () => {
   return (
     <div className='my-12 flex items-center'>
-      <div className='first-line mr-10'>
+      <div className='first-line mr-10 cursor-pointer'>
         <Logo />
       </div>
       <Input />

@@ -26,8 +26,8 @@ interface FunctionalIconType {
 const FunctionalIcon: React.FC<FunctionalIconType> = ({icon, text}) => {
     const Icon = iconBox[icon]
   return (
-    <a className='flex flex-col items-center'>
-        <Icon />
+    <a className='flex flex-col items-center cursor-pointer'>
+        <Icon aria-label={icon}/>
       <p className='text-sm font-medium whitespace-nowrap'>{text}</p>
     </a>
   )
