@@ -5,7 +5,7 @@ const CategoryNavigation = () => {
   return (
     <div className='flex space-x-8 items-center'>
         <a className='space-x-2 flex items-center cursor-pointer hover:text-red-400 hover:fill-red-400'>
-            <Hamburger />
+            <Hamburger aria-label='hamburger icon'/>
             <p className='text-sm font-medium whitespace-nowrap'>Wszystkie kategorie</p>
         </a>
         <a className='space-x-2 flex items-center cursor-pointer'>
