@@ -4,17 +4,21 @@ import CategoryText from './CategoryText'
 import {useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
 
-interface ResponseName {
+export interface ResponseName {
     id: number;
     name: string;
     image: string;
 }
 
 const CategoryNavigation = () => {
-  const {data} = useQuery(['category'], ()=>{
+  const {data, isError} = useQuery(['category'], ()=>{
     return Axios.get("https://api.escuelajs.co/api/v1/categories").then((res) => res.data )
   } )
  
+  if (isError) {
+    return <p className='text-red-400'>Error in fetching Categories</p>
+  }
+
   const allCategories = data?.map(({name}:ResponseName) => <CategoryText category={name} />)
 
   return (
