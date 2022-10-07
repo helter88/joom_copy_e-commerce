@@ -1,7 +1,22 @@
+import { useEffect } from 'react'
 import {ReactComponent as Hamburger} from './../../img/hamburger-icon.svg'
 import CategoryText from './CategoryText'
+import {useQuery} from '@tanstack/react-query';
+import Axios from 'axios';
+
+interface ResponseName {
+    id: number;
+    name: string;
+    image: string;
+}
 
 const CategoryNavigation = () => {
+  const {data} = useQuery(['category'], ()=>{
+    return Axios.get("https://api.escuelajs.co/api/v1/categories").then((res) => res.data )
+  } )
+ 
+  const allCategories = data?.map(({name}:ResponseName) => <CategoryText category={name} />)
+
   return (
     <div className='flex space-x-8 items-center'>
         <a className='space-x-2 flex items-center cursor-pointer hover:text-red-400 hover:fill-red-400'>
@@ -12,7 +27,7 @@ const CategoryNavigation = () => {
             <img className='h-4' src='https://resources.joomcdn.net/icon/feed@2x.png' alt='icon opinions'/>
             <p className='text-sm font-medium whitespace-nowrap text-red-400'>Recenzje użytkowników</p>
         </a>
-        <CategoryText category='Garderoba' />
+        {allCategories}
       
     </div>
   )
