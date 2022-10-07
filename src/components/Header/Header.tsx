@@ -10,10 +10,10 @@ const Header = () => {
       </div>
       <Input />
       <div className='flex space-x-8 ml-10'>
-        <FunctionalIcon text='Powiadomienia' icon='bell'/>
-        <FunctionalIcon text='Zaloguj się' icon='person'/>
-        <FunctionalIcon text='Moje zamówienia' icon='box'/>
-        <FunctionalIcon text='Koszyk' icon='cart'/>
+        <FunctionalIcon text='Notyfications' icon='bell'/>
+        <FunctionalIcon text='Sign in' icon='person'/>
+        <FunctionalIcon text='My orders' icon='box'/>
+        <FunctionalIcon text='Shopping cart' icon='cart'/>
       </div>
     </div>
   )
