@@ -21,7 +21,7 @@ const CategoryNavigation = () => {
     return <p className='text-red-400'>Error in fetching Categories</p>
   }
 
-  const allCategories = data.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} />)
+  const allCategories = data?.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} />)
 
   return (
     <div className='flex space-x-8 items-center'>
