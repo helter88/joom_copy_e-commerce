@@ -10,16 +10,18 @@ export interface ResponseName {
     image: string;
 }
 
+const fetchCategories = ()=>{
+  return Axios.get("https://api.escuelajs.co/api/v1/categories").then((res) => res.data )
+}
+
 const CategoryNavigation = () => {
-  const {data, isError} = useQuery(['category'], ()=>{
-    return Axios.get("https://api.escuelajs.co/api/v1/categories").then((res) => res.data )
-  } )
+  const {data, isError} = useQuery(['category'], fetchCategories )
  
   if (isError) {
     return <p className='text-red-400'>Error in fetching Categories</p>
   }
 
-  const allCategories = data?.map(({name}:ResponseName) => <CategoryText category={name} />)
+  const allCategories = data.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} />)
 
   return (
     <div className='flex space-x-8 items-center'>
