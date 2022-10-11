@@ -41,7 +41,7 @@ const Products = () => {
   
   const add20Products = () => setNumProducts(num => num+20 )
   
-  const onClickHandler = () => setNumProducts(num => num+20 );
+  const onClickHandler = () => add20Products();
   const dataSliced = data?.slice(0,numProducts)
 
 

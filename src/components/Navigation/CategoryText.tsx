@@ -1,13 +1,15 @@
 
 interface CategoryTextType {
     category: string;
+    categoryId: number;
+    onCategoryHandle: (event: React.MouseEvent<HTMLButtonElement>) =>void
 }
 
-const CategoryText: React.FC<CategoryTextType> = ({category}) => {
+const CategoryText: React.FC<CategoryTextType> = ({category, categoryId, onCategoryHandle}) => {
   return (
-    <a className="cursor-pointer">
+    <button className="cursor-pointer" onClick={onCategoryHandle} id={`${categoryId}`}>
        <p className='text-sm font-normal whitespace-nowrap hover:text-red-400 text-gray-600 '>{category}</p> 
-    </a>
+    </button>
     
 
   )
