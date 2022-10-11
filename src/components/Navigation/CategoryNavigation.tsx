@@ -24,7 +24,7 @@ const CategoryNavigation = () => {
   const allCategories = data?.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} />)
 
   return (
-    <div className='flex space-x-8 items-center'>
+    <div className='flex gap-y-4 gap-x-6 items-center w-full flex-wrap'>
         <a className='space-x-2 flex items-center cursor-pointer hover:text-red-400 hover:fill-red-400'>
             <Hamburger aria-label='hamburger icon'/>
             <p className='text-sm font-medium whitespace-nowrap'>All categories</p>
