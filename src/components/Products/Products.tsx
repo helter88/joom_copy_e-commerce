@@ -4,6 +4,7 @@ import {QueryObserver, useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
 import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
+import ShowMoreButton from './ShowMoreButton';
 
 export interface ResponseProduct  {
   id: number;
@@ -52,9 +53,7 @@ const Products = () => {
        {allProducts}
       </main>
       { numProducts === 20 &&
-        <div className="self-center pt-8 pb-20 mr-28">
-        <button className="text-base font-medium border py-3 px-9 border-black rounded-xl hover:text-red-400 hover:border-red-400" onClick={onClickHandler}>SHOW MORE</button>
-      </div>
+        <ShowMoreButton onClickHandler={onClickHandler} />
       }
       { numProducts >20 && <div ref={targetRef}> See more</div>}
     </div>
