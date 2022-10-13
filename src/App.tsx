@@ -18,7 +18,11 @@ function App() {
         <CategoryNavigation />
         <Routes >
          <Route path='/' element ={
-            <Products />
+            <>
+              <FilterArticles />
+              <Products />
+            </>
+            
            } />
           <Route path='*' element ={<PageNotFound />} />
         </Routes>
