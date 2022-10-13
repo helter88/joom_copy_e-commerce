@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import Products from './components/Products/Products';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const client = new QueryClient();
@@ -19,7 +20,7 @@ function App() {
          <Route path='/' element ={
             <Products />
            } />
-          <Route path='*' element ={<h1>Page not found!</h1>} />
+          <Route path='*' element ={<PageNotFound />} />
         </Routes>
         
         
