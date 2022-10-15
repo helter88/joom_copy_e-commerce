@@ -5,6 +5,8 @@ import Axios from 'axios';
 import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ShowMoreButton from './ShowMoreButton';
+import { useProducts } from '../../hooks/products';
+import { useSearchParams } from 'react-router-dom';
 
 export interface ResponseProduct  {
   id: number;
@@ -19,15 +21,13 @@ export interface ResponseProduct  {
   images: string[];
 }
 
-const fetchProducts = ()=>{
-  return Axios.get("https://api.escuelajs.co/api/v1/products").then(resp=> resp.data)
-}
-
 const Products = () => {
-  const {data, isError} = useQuery(['products'], fetchProducts)
+  const [searchParams] =  useSearchParams()
+  const category = searchParams.get('category') as string
+
+  const {isLoading, products} = useProducts({category})  
   const [numProducts, setNumProducts] = useState(20);
   const {ref:targetRef, inView} = useInView()
-
 
   useEffect(() => {
     if(inView){
@@ -35,15 +35,15 @@ const Products = () => {
     }
     
   }, [numProducts, inView]);
-
-  if (isError) {
+ 
+  if (false) {
     return <p className='text-red-400'>Error in fetching Products</p>
   }
   
   const add20Products = () => setNumProducts(num => num+20 )
   
   const onClickHandler = () => add20Products();
-  const dataSliced = data?.slice(0,numProducts)
+  const dataSliced = products?.slice(0,numProducts)
 
 
   const allProducts = dataSliced?.map(({title, price, images, id}:ResponseProduct) => <Card key={id} price={`PLN ${price}`} title={title} imageSource={images[0]}/>)

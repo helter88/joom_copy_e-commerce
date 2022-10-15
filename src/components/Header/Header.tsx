@@ -7,7 +7,7 @@ const Header = () => {
     <div className='my-12 flex items-center'>
       <div className='first-line mr-10 cursor-pointer'>
         <Logo />
-      </div>
+      </div> 
       <Input />
       <div className='flex space-x-8 ml-10'>
         <FunctionalIcon text='Notyfications' icon='bell'/>
