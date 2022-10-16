@@ -3,17 +3,27 @@ import Card from "./Card";
 import { useInView } from 'react-intersection-observer';
 import ShowMoreButton from './ShowMoreButton';
 import { ResponseProduct, useProductsSortByCategory } from '../../hooks/products-sort-by-category';
+import { useSearchParams } from 'react-router-dom';
 
 
 
 const ProductsList = () => {
-  const {sortedProductsByCategory, isError} = useProductsSortByCategory(null);
+  const [searchParams] = useSearchParams();
+  const categoryFromURL = searchParams.get('category');
+
+  const {sortedProductsByCategory, isError} = useProductsSortByCategory(categoryFromURL);
   const [numProducts, setNumProducts] = useState(20);
   const {ref:targetRef, inView} = useInView()
 
+  useEffect(() =>{
+      setNumProducts(20);
+  }, [searchParams])
+
   useEffect(() => {
     if(inView){
-      add20Products();
+      if(numProducts < sortedProductsByCategory.length){
+        add20Products();
+      } 
     }
     
   }, [numProducts, inView]);
@@ -37,7 +47,8 @@ const ProductsList = () => {
       { numProducts === 20 &&
         <ShowMoreButton onClickHandler={onClickHandler} />
       }
-      { numProducts >20 && <div ref={targetRef}> See more</div>}
+      { numProducts >20 && <div className='self-center pt-8 pb-20 mr-28' 
+      ref={targetRef}> No more products to display</div>}
     </div>
     
   )

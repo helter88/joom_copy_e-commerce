@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 interface CategoryTextType {
     category: string;
@@ -7,9 +8,12 @@ interface CategoryTextType {
 
 const CategoryText: React.FC<CategoryTextType> = ({category, categoryId, onCategoryHandle}) => {
   return (
-    <button className="cursor-pointer" onClick={onCategoryHandle} id={`${categoryId}`}>
+    <Link to={`/?category=${category?.toLocaleLowerCase()}`}
+    className="cursor-pointer" 
+    onClick={onCategoryHandle} 
+    id={`${categoryId}`}>
        <p className='text-sm font-normal whitespace-nowrap hover:text-red-400 text-gray-600 '>{category}</p> 
-    </button>
+    </Link>
     
 
   )
