@@ -13,7 +13,7 @@ import Axios from 'axios'
         return category ? 
          data?.filter((d: any) => d?.category?.name.toLowerCase() === category)
           :  
-        data 
+         data
     }, [category, isLoading])
 
     return {isLoading, isError, products}
