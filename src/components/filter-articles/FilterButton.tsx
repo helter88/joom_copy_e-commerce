@@ -1,4 +1,4 @@
-import {ReactComponent as ArrowMenu} from './../../img/menu_arrow-icon.svg'
+import {ReactComponent as ArrowMenu} from './../../assets/img/menu_arrow-icon.svg'
 const FilterButton = () => {
   return (
     <button className='flex space-x-2 items-center bg-slate-100 rounded-xl p-2'>

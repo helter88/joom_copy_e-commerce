@@ -1,6 +1,6 @@
 
-import {ReactComponent as Hamburger} from './../../img/hamburger-icon.svg'
-import CategoryText from './CategoryText'
+import {ReactComponent as Hamburger} from './../../assets/img/hamburger-icon.svg';
+import CategoryText from './CategoryText';
 import {useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
 
@@ -21,7 +21,7 @@ const CategoryNavigation = () => {
     return <p className='text-red-400'>Error in fetching Categories</p>
   }
 
-  const allCategories = data?.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} categoryId = {id} onCategoryHandle={(e)=> console.log(e.currentTarget.id)} />)
+  const allCategories = data?.map(({name,id}:ResponseName) => <CategoryText key={id} category={name} categoryId = {id} onCategoryHandle={()=> console.log('categoryhandler"')} />)
 
   return (
     <div className='flex gap-y-4 gap-x-6 items-center w-full flex-wrap'>

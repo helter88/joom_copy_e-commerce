@@ -1,7 +1,7 @@
-import {ReactComponent as Bell } from './../../img/bell-icon.svg'
-import {ReactComponent as Person } from './../../img/person-icon.svg'
-import {ReactComponent as Box } from './../../img/box-icon.svg'
-import {ReactComponent as ShoppingCart } from './../../img/shopping_cart-icon.svg'
+import {ReactComponent as Bell } from './../../assets/img/bell-icon.svg'
+import {ReactComponent as Person } from './../../assets/img/person-icon.svg'
+import {ReactComponent as Box } from './../../assets/img/box-icon.svg'
+import {ReactComponent as ShoppingCart } from './../../assets/img/shopping_cart-icon.svg'
 
 interface IconBoxType {
     bell: typeof Bell;

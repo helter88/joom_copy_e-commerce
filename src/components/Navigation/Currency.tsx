@@ -1,4 +1,4 @@
-import {ReactComponent as ArrowDown} from './../../img/arrow-down.svg';
+import {ReactComponent as ArrowDown} from './../../assets/img/arrow-down.svg';
 
 const Currency = () => {
   return (

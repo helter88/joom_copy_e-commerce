@@ -1,5 +1,5 @@
 
-import StarsRating from './../../img/stars-rating.png';
+import StarsRating from './../../assets/img/stars-rating.png';
 
 export interface CardData {
     price: string;

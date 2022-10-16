@@ -2,7 +2,7 @@
 interface CategoryTextType {
     category: string;
     categoryId: number;
-    onCategoryHandle: (event: React.MouseEvent<HTMLButtonElement>) =>void
+    onCategoryHandle: () =>void
 }
 
 const CategoryText: React.FC<CategoryTextType> = ({category, categoryId, onCategoryHandle}) => {

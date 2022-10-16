@@ -1,4 +1,4 @@
-import {ReactComponent as Logo} from './../../img/Joom-logo.svg';
+import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
 import FunctionalIcon from './FunctionalIcon';
 import Input from './Input';
 

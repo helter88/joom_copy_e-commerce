@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import Card from "./Card"
 import {QueryObserver, useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
-import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ShowMoreButton from './ShowMoreButton';
 
@@ -23,7 +22,7 @@ const fetchProducts = ()=>{
   return Axios.get("https://api.escuelajs.co/api/v1/products").then(resp=> resp.data)
 }
 
-const Products = () => {
+const ProductsList = () => {
   const {data, isError} = useQuery(['products'], fetchProducts)
   const [numProducts, setNumProducts] = useState(20);
   const {ref:targetRef, inView} = useInView()
@@ -61,4 +60,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default ProductsList
