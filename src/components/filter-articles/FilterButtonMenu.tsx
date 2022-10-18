@@ -1,14 +1,28 @@
 import React from 'react'
+import { useSearchParams } from 'react-router-dom';
 
 export interface FilterButtonMenuProps {
     options: string[];
     isSelected: true | false
+    toggleClick: ()=>void
 }
 
-const FilterButtonMenu: React.FC<FilterButtonMenuProps> = ({options, isSelected}) => {
+
+const FilterButtonMenu: React.FC<FilterButtonMenuProps> = ({options, isSelected, toggleClick}) => {
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const categoryParamsURL = searchParams.get('category');
+
+  
+    const onClickHandler= (v:string) => setSearchParams({category: `${categoryParamsURL}`,
+      sort: v })
+
     const allOptions = options.map((v)=>(
         <div key={v} className='py-2 text-sm hover:text-red-400'>
-           <a>{v}</a> 
+           <button onClick={() => {
+            onClickHandler(v);
+            toggleClick();
+            }}>{v}</button> 
         </div>
         
         ))

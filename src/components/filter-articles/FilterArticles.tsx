@@ -13,7 +13,7 @@ const FilterArticles = () => {
       <div className="relative" ref={elementRef}>
         <FilterButton onClickHandler={onClickHandler} />
         <FilterButtonMenu options={['By default','Ascending price', 'Descending price']}
-          isSelected={isClicked}/>
+          isSelected={isClicked} toggleClick ={onClickHandler}/>
       </div>
       
 
