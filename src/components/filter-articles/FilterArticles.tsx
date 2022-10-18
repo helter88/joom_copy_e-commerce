@@ -1,30 +1,19 @@
+import useOpenCloseDropdown from "../../hooks/open-close-dropdown"
 import FilterButton from "./FilterButton"
 import FilterButtonMenu from "./FilterButtonMenu"
-import { useState, useEffect, useRef } from 'react'
+
 
 const FilterArticles = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const {isClicked, toggle, elementRef} = useOpenCloseDropdown()
 
-  useEffect(()=>{
-    document.body.addEventListener("click", handleClickOutside)
-    return ()=> document.body.removeEventListener('click', handleClickOutside)
-  },[isClicked])
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (e:any) => {
-    if (isClicked && !ref.current?.contains(e.target)) {
-      setIsClicked(false);
-    }
-  }
-
-  const onClickHandler = () => setIsClicked((val)=> !val)
+  const onClickHandler = () => toggle()
   return (
     <div className="mt-20 pt-5 mx-auto w-4/5">
-      <div className="relative" ref={ref}>
+      <div className="relative" ref={elementRef}>
         <FilterButton onClickHandler={onClickHandler} />
         <FilterButtonMenu options={['By default','Ascending price', 'Descending price']}
-          isActive={isClicked}/>
+          isSelected={isClicked}/>
       </div>
       
 
