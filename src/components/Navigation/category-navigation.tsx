@@ -3,6 +3,7 @@ import {ReactComponent as Hamburger} from './../../assets/img/hamburger-icon.svg
 import CategoryText from './category-text';
 import {useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export interface ResponseName {
     id: number;
@@ -16,6 +17,11 @@ const fetchCategories = ()=>{
 
 const CategoryNavigation = () => {
   const {data, isError} = useQuery(['category'], fetchCategories )
+  const navigator = useNavigate();
+
+  const onHandleAllProducts = () => {
+    navigator('/')
+  }
  
   if (isError) {
     return <p className='text-red-400'>Error in fetching Categories</p>
@@ -25,7 +31,7 @@ const CategoryNavigation = () => {
 
   return (
     <div className='flex gap-y-4 gap-x-6 items-center w-full flex-wrap'>
-        <a className='space-x-2 flex items-center cursor-pointer hover:text-red-400 hover:fill-red-400'>
+        <a className='space-x-2 flex items-center cursor-pointer hover:text-red-400 hover:fill-red-400' onClick={onHandleAllProducts}>
             <Hamburger aria-label='hamburger icon'/>
             <p className='text-sm font-medium whitespace-nowrap'>All categories</p>
         </a>
