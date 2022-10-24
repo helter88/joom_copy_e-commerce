@@ -15,7 +15,6 @@ const FiveStarScore: React.FC<FiveStarScoreType> = ({quantity, score, ...props})
         starList.push(<Star id={`${Math.random()+i}`} key={Math.random()+i} fillPercent='100%' {...props} />)
 
         } else if ( i >= Math.floor(score) && i-score <= 0.5 && i-score< 1){
-            console.log('i - score = ', i-score )
 
             starList.push(<Star id={`${Math.random()+i}`} key={Math.random()+i} fillPercent='50%' {...props} />)
 

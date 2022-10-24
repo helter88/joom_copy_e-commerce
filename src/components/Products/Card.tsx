@@ -22,7 +22,7 @@ const Card: React.FC<CardData> = ({price, title, imageSource}) => {
         </div>
         
         <p className='pt-4 text-xl font-medium'> {price}</p>
-        <div className='w-20 flex gap-x-1'>
+        <div className='w-20 flex gap-x-1 py-2'>
           <FiveStarScore quantity={5} score={4.6} 
           fillColor="rgb(248 113 113)" stroke="rgb(248 113 113)" emptyColor="rgb(241 245 249)" />
         </div>

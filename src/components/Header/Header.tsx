@@ -1,6 +1,7 @@
 import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
 import FunctionalIcon from './functional-icon';
 import Input from './input';
+import SearchBar from './search-bar';
 
 const Header = () => {
   return (
@@ -8,7 +9,10 @@ const Header = () => {
       <div className='first-line mr-10 cursor-pointer'>
         <Logo />
       </div>
-      <Input />
+      <div className='w-full'>
+        <SearchBar />
+      </div>
+      
       <div className='flex space-x-8 ml-10'>
         <FunctionalIcon text='Notyfications' icon='bell'/>
         <FunctionalIcon text='Sign in' icon='person'/>
