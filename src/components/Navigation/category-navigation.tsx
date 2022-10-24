@@ -1,9 +1,10 @@
 
 import {ReactComponent as Hamburger} from './../../assets/img/hamburger-icon.svg';
 import CategoryText from './category-text';
-import {useQuery} from '@tanstack/react-query';
-import Axios from 'axios';
+
+
 import { useNavigate } from 'react-router-dom';
+import useCategories from '../../hooks/use-categories';
 
 export interface ResponseName {
     id: number;
@@ -11,12 +12,9 @@ export interface ResponseName {
     image: string;
 }
 
-const fetchCategories = ()=>{
-  return Axios.get("https://api.escuelajs.co/api/v1/categories").then((res) => res.data )
-}
 
 const CategoryNavigation = () => {
-  const {data, isError} = useQuery(['category'], fetchCategories )
+  const {data, isError} = useCategories();
   const navigator = useNavigate();
 
   const onHandleAllProducts = () => {
