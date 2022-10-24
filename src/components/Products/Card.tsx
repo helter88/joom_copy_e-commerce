@@ -1,5 +1,5 @@
 
-import StarsRating from './../../assets/img/stars-rating.png';
+import FiveStarScore from '../ui/five-star-score';
 
 export interface CardData {
     price: string;
@@ -22,7 +22,10 @@ const Card: React.FC<CardData> = ({price, title, imageSource}) => {
         </div>
         
         <p className='pt-4 text-xl font-medium'> {price}</p>
-        <img src={StarsRating} alt='stars rating' />
+        <div className='w-20 flex gap-x-1'>
+          <FiveStarScore quantity={5} score={4.6} 
+          fillColor="rgb(248 113 113)" stroke="rgb(248 113 113)" emptyColor="rgb(241 245 249)" />
+        </div>
         <p className='text-xs'>{title}</p>
     </div>
   )
