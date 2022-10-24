@@ -1,10 +1,10 @@
-import './App.css';
-import Header from './components/header/Header';
-import CategoryNavigation from './components/navigation/CategoryNavigation';
-import Navigation from './components/navigation/Navigation';
+import './app.css';
+import Header from './components/header/header';
+import CategoryNavigation from './components/navigation/category-navigation';
+import Navigation from './components/navigation/navigation';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
-import PageNotFound from './pages/PageNotFound';
+import PageNotFound from './pages/page-not-found';
 import Products from './components/products';
 
 

@@ -1,6 +1,6 @@
 
 import {ReactComponent as Hamburger} from './../../assets/img/hamburger-icon.svg';
-import CategoryText from './CategoryText';
+import CategoryText from './category-text';
 import {useQuery} from '@tanstack/react-query';
 import Axios from 'axios';
 

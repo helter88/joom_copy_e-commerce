@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, createSearchParams } from 'react-router-dom';
+import { URLSearchParams } from 'url';
 
 export interface FilterButtonMenuProps {
     options: string[];
@@ -13,9 +14,19 @@ const FilterButtonMenu: React.FC<FilterButtonMenuProps> = ({options, isSelected,
 
     const categoryParamsURL = searchParams.get('category');
 
+    //  Czemu jak poniższe wstawię do setSearchParams to nie działa
+    const createParamsObject = (v: string): URLSearchParams => {
+      return (categoryParamsURL ?
+        createSearchParams({category: `${categoryParamsURL}`,
+      sort: v }) : 
+      createSearchParams({
+        sort: v
+      }) 
+      )
+    }
+
   
-    const onClickHandler= (v:string) => setSearchParams({category: `${categoryParamsURL}`,
-      sort: v })
+    const onClickHandler= (v:string) => setSearchParams(createParamsObject(v))
 
     const allOptions = options.map((v)=>(
         <div key={v} className='py-2 text-sm hover:text-red-400'>

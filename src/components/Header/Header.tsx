@@ -1,6 +1,6 @@
 import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
-import FunctionalIcon from './FunctionalIcon';
-import Input from './Input';
+import FunctionalIcon from './functional-icon';
+import Input from './input';
 
 const Header = () => {
   return (

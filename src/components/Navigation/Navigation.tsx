@@ -1,5 +1,5 @@
-import ChooseLanguage from "./ChooseLanguage"
-import Currency from "./Currency"
+import ChooseLanguage from "./choose-language"
+import Currency from "./currency"
 
 const Navigation = () => {
   return (

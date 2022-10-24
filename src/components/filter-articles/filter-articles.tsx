@@ -1,6 +1,6 @@
 import useOpenCloseDropdown from "../../hooks/open-close-dropdown"
-import FilterButton from "./FilterButton"
-import FilterButtonMenu from "./FilterButtonMenu"
+import FilterButton from "./filter-button"
+import FilterButtonMenu from "./filter-button-menu"
 
 
 const FilterArticles = () => {

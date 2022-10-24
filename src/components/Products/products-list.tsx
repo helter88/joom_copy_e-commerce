@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import Card from "./Card";
+import Card from "./card";
 import { useInView } from 'react-intersection-observer';
-import ShowMoreButton from './ShowMoreButton';
+import ShowMoreButton from './show-more-button';
 import { ResponseProduct, useProductsSortByCategory } from '../../hooks/products-sort-by-category';
 import { useSearchParams } from 'react-router-dom';
 import { useProductsSortAscendingDescending } from '../../hooks/products-sort-ascending-descending';
