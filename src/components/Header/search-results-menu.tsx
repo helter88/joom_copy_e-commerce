@@ -14,7 +14,7 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText}) => {
   const [foundProducts, setFoundProducts] = useState<null |ResponseProduct[]>(null)
 
   useEffect(() =>{
-    if (inputText === ''){
+    if (inputText === '') {
       setIsOpen(false)
     }else{
       setIsOpen(true)
@@ -25,11 +25,25 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText}) => {
     }
   },[inputText])
 
+  useEffect(()=>{
+    if (foundProducts?.length === 0) {
+      setIsOpen(false)
+    }
+  }, [foundProducts])
+
 
 
 
   const displayProducts = foundProducts?.map(({title}) =>{
-    return <p key={title} className='p-3 hover:bg-slate-100'>{title}</p>
+
+    const boldedLetters = inputText ? 
+    <>
+    <span className='font-medium text-black'>{`${title.slice(0, inputText.length)}`}</span> 
+    <span>{`${title.slice(inputText.length)}`}</span>
+    </>
+    : <span>{title}</span>
+
+    return <p key={title} className='p-3 hover:bg-slate-100'>{boldedLetters}</p>
   })
 
   return (
