@@ -4,11 +4,15 @@ import { useSearchParams } from 'react-router-dom';
 import { ResponseProduct, useProductsSortByCategory } from '../../hooks/products-sort-by-category';
 
 export interface MenuType {
-  inputText: string
+  inputText: string,
+  setInputText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchResultsMenu: React.FC<MenuType> = ({inputText}) => {
+const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
   const {sortedProductsByCategory: allProducts}= useProductsSortByCategory(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchURL = searchParams.get('search')
 
   const [isOpen, setIsOpen] = useState(false);
   const [foundProducts, setFoundProducts] = useState<null |ResponseProduct[]>(null)
@@ -31,7 +35,17 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText}) => {
     }
   }, [foundProducts])
 
+  useEffect(()=>{
+    if (searchURL !== null) {
+      setIsOpen(false)
+    }
+  }, [searchURL])
 
+  const onCLickHandler= (title: string) => {
+    setSearchParams({search: `${title}`})
+    setInputText(title)
+    setIsOpen(false);
+  }
 
 
   const displayProducts = foundProducts?.map(({title}) =>{
@@ -43,7 +57,8 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText}) => {
     </>
     : <span>{title}</span>
 
-    return <p key={title} className='p-3 hover:bg-slate-100'>{boldedLetters}</p>
+    return <p key={title} className='p-3 hover:bg-slate-100 cursor-pointer'
+    onClick={() => onCLickHandler(title) }>{boldedLetters}</p>
   })
 
   return (
