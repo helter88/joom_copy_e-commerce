@@ -13,16 +13,24 @@ const FilterButtonMenu: React.FC<FilterButtonMenuProps> = ({options, isSelected,
     const [searchParams, setSearchParams] = useSearchParams();
 
     const categoryParamsURL = searchParams.get('category');
+    const searchTypeFromURL = searchParams.get('search');
 
     //  Czemu jak poniższe wstawię do setSearchParams to nie działa
     const createParamsObject = (v: string): URLSearchParams => {
-      return (categoryParamsURL ?
-        createSearchParams({category: `${categoryParamsURL}`,
-      sort: v }) : 
-      createSearchParams({
-        sort: v
-      }) 
-      )
+      if(categoryParamsURL){
+
+        return createSearchParams({category: `${categoryParamsURL}`,
+        sort: v })
+
+      }else if (searchTypeFromURL) {
+
+        return createSearchParams({search: `${searchTypeFromURL}`,
+        sort: v })
+      }else{
+        return createSearchParams({
+          sort: v
+        }) 
+      }
     }
 
   

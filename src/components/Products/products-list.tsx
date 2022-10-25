@@ -5,6 +5,7 @@ import ShowMoreButton from './show-more-button';
 import { ResponseProduct, useProductsSortByCategory } from '../../hooks/products-sort-by-category';
 import { useSearchParams } from 'react-router-dom';
 import { useProductsSortAscendingDescending } from '../../hooks/products-sort-ascending-descending';
+import { useProductsSearch } from '../../hooks/products-search';
 
 
 
@@ -12,9 +13,18 @@ const ProductsList = () => {
   const [searchParams] = useSearchParams();
   const categoryFromURL = searchParams.get('category');
   const sortTypeFromURL = searchParams.get('sort');
+  const searchTypeFromURL = searchParams.get('search');
+  
 
+  const {searchedProducts, isError:isError2} = useProductsSearch(searchTypeFromURL)
   const {sortedProductsByCategory, isError} = useProductsSortByCategory(categoryFromURL);
-  const {sortedProducts} = useProductsSortAscendingDescending(sortTypeFromURL, sortedProductsByCategory )
+  
+  const products = searchTypeFromURL !== null ? searchedProducts : sortedProductsByCategory
+
+  const showError = searchTypeFromURL !== null ? isError2 : isError
+  
+  
+  const {sortedProducts} = useProductsSortAscendingDescending(sortTypeFromURL, products )
   const [numProducts, setNumProducts] = useState(20);
   const {ref:targetRef, inView} = useInView()
 
@@ -26,14 +36,14 @@ const ProductsList = () => {
 
   useEffect(() => {
     if(inView){
-      if(numProducts < sortedProductsByCategory.length){
+      if(numProducts < products.length){
         add20Products();
       } 
     }
     
   }, [numProducts, inView]);
 
-  if (isError) {
+  if (showError) {
     return <p className='text-red-400'>Error in fetching Products</p>
   }
   

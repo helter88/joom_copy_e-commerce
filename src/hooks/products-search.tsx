@@ -10,9 +10,24 @@ export const useProductsSearch = (search: string | null) =>{
     const {allProducts, isError, isLoading} = useProducts();
 
     const searchedProducts = useMemo(()=>{
-        return search ?
-            allProducts?.filter((d:ResponseProduct) => d.title.toLowerCase().startsWith(search.toLowerCase()) )
-            : allProducts
+
+        const foundProducts = () => {
+            if (search) {
+                const filteredProducts = allProducts?.filter((d:ResponseProduct) => 
+                d.title.toLowerCase().startsWith(search.toLowerCase()) )
+                
+                if (filteredProducts.length === 0){
+                    return allProducts
+                }
+                return filteredProducts
+
+            } else {
+                return allProducts
+            }
+        } 
+
+        return foundProducts()
+
     }, [search, isLoading])
     return {searchedProducts, isError}
 }

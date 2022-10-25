@@ -58,7 +58,7 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
     </>
     : <span>{title}</span>
 
-    return <p key={title} className='p-3 hover:bg-slate-100 cursor-pointer'
+    return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
     onClick={() => onCLickHandler(title) }>{boldedLetters}</p>
   })
 
