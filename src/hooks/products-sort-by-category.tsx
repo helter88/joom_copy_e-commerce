@@ -1,6 +1,7 @@
 import Axios from "axios"
 import { useMemo } from "react"
-import { useQuery} from '@tanstack/react-query';
+import useProducts from "./use-products";
+
 
 export interface ResponseProduct  {
     id: number;
@@ -15,16 +16,14 @@ export interface ResponseProduct  {
     images: string[];
   }
 
-const fetchProducts = ()=>{
-    return Axios.get("https://api.escuelajs.co/api/v1/products").then(resp=> resp.data)
-  }
 export const useProductsSortByCategory = (category: string | null) =>{
-    const {data, isError, isLoading} = useQuery(['products'], fetchProducts)
+
+    const {allProducts, isError, isLoading} = useProducts();
 
     const sortedProductsByCategory = useMemo(()=>{
         return category ?
-            data?.filter((d:ResponseProduct) => d.category.name.toLowerCase() === category )
-            : data
+            allProducts?.filter((d:ResponseProduct) => d.category.name.toLowerCase() === category )
+            : allProducts
     }, [category, isLoading])
     return {sortedProductsByCategory, isError}
 }

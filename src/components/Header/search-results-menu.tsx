@@ -1,7 +1,8 @@
-import { constants } from 'perf_hooks';
+
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { ResponseProduct, useProductsSortByCategory } from '../../hooks/products-sort-by-category';
+import { ResponseProduct} from '../../hooks/products-sort-by-category';
+import useProducts from '../../hooks/use-products';
 
 export interface MenuType {
   inputText: string,
@@ -9,7 +10,7 @@ export interface MenuType {
 }
 
 const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
-  const {sortedProductsByCategory: allProducts}= useProductsSortByCategory(null);
+  const {allProducts}= useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchURL = searchParams.get('search')
