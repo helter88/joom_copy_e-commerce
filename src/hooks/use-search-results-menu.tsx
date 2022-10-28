@@ -58,11 +58,11 @@ const useSearchResultsMenu= (inputText:string, setInputText:React.Dispatch<React
           }
           ))
 
-          let foundProducts: FoundProduct[]  = []
+          let foundProducts: FoundProduct[] = []
 
           allProducts.map((product: ResponseProduct) => {
             let weight = 0
-            fields.map((field: Field) => {
+            fields.forEach((field: Field) => {
               if(weight === 0){
                 weight = checkString(product, field)
                 if(weight > 0)
