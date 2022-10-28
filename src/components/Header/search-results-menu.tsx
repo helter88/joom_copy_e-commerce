@@ -7,28 +7,82 @@ export interface MenuType {
   setInputText: React.Dispatch<React.SetStateAction<string>>;
 }
 
+const generalProperty ={
+
+}
+
 const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
   
   const {isOpen, onCLickHandler, foundProducts} = useSearchResultsMenu(inputText, setInputText )
 
-  const displayProducts = foundProducts?.map(({title}) =>{
+  const displayProducts = foundProducts?.map(({title, description}) =>{
+    
+    if (title.toLowerCase().startsWith(inputText.toLowerCase())){
+      const boldedLetters1 =  
+          <>
+          <span className='font-medium text-black'>{`${title.slice(0, inputText.length)}`}</span> 
+          <span>{`${title.slice(inputText.length)}`}</span>
+          </>
 
-    const boldedLetters = inputText ? 
-    <>
-    <span className='font-medium text-black'>{`${title.slice(0, inputText.length)}`}</span> 
-    <span>{`${title.slice(inputText.length)}`}</span>
-    </>
-    : <span>{title}</span>
 
-    return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
-    onClick={() => onCLickHandler(title) }>{boldedLetters}</p>
+          return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
+          onClick={() => onCLickHandler(title) }>{boldedLetters1}</p>
+
+    }else if (title.toLowerCase().includes(inputText.toLowerCase())) {
+      let startBold = title.toLowerCase().indexOf(inputText.toLowerCase())
+      let endBold = title.toLowerCase().indexOf(inputText.toLowerCase())+ inputText.length
+      const boldedLetters2 =  
+          <>
+          <span >{`${title.slice(0, startBold)}`}</span> 
+          <span className='font-medium text-black'>{`${title.slice(startBold, endBold)}`}</span> 
+          <span>{`${title.slice(endBold)}`}</span>
+          </>
+
+
+          return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
+          onClick={() => onCLickHandler(title) }>{boldedLetters2}</p>
+    }else if (description.toLowerCase().startsWith(inputText.toLowerCase())){
+      const boldedLetters3 =  
+          <>
+          <span className='text-sm text-black'>{`${description.slice(0, inputText.length)}`}</span> 
+          <span className="text-xs">{`${description.slice(inputText.length)}`}</span>
+          </>
+
+          return (
+            <div key={`${title + Math.random()}`} className= 'p-3 hover:bg-slate-100 cursor-pointer'
+            onClick={() => onCLickHandler(title) }>
+              <p>{title}</p>
+              {boldedLetters3}
+            </div>
+            )
+    } else if (description.toLowerCase().includes(inputText.toLowerCase())){
+        let startBold = description.toLowerCase().indexOf(inputText.toLowerCase())
+        let endBold = description.toLowerCase().indexOf(inputText.toLowerCase())+ inputText.length
+        const boldedLetters4 =  
+            <>
+            <span className="text-xs">{`${description.slice(0, startBold)}`}</span> 
+            <span className='text-xs text-black font-bold'>{`${description.slice(startBold, endBold)}`}</span> 
+            <span className="text-xs">{`${description.slice(endBold)}`}</span>
+            </>
+        return (
+          <div key={`${title + Math.random()}`} className= 'p-3 hover:bg-slate-100 cursor-pointer'
+          onClick={() => onCLickHandler(title) }>
+            <p>{title}</p>
+            {boldedLetters4}
+          </div>
+          )
+    }
+          
+
+
+    
   })
 
   return (
     <div className={`absolute ${isOpen ? '' : 'hidden'} py-2 z-10 bg-white rounded-xl w-2/5 
      border-slate-100 shadow-sm shadow-black
     text-sm font-normal whitespace-nowrap text-gray-600`}>
-      {displayProducts?.slice(0,5)}
+      {displayProducts}
     </div>
   )
 }
