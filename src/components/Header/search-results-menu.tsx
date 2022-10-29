@@ -16,21 +16,14 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
   const {isOpen, onCLickHandler, foundProducts} = useSearchResultsMenu(inputText, setInputText )
 
   const displayProducts = foundProducts?.map(({title, description}) =>{
+
+    const titleLower = title.toLowerCase()
+    const inputTextLower = inputText.toLowerCase();
+    const descriptionLower = description.toLowerCase()
     
-    if (title.toLowerCase().startsWith(inputText.toLowerCase())){
-      const boldedLetters1 =  
-          <>
-          <span className='font-medium text-black'>{`${title.slice(0, inputText.length)}`}</span> 
-          <span>{`${title.slice(inputText.length)}`}</span>
-          </>
-
-
-          return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
-          onClick={() => onCLickHandler(title) }>{boldedLetters1}</p>
-
-    }else if (title.toLowerCase().includes(inputText.toLowerCase())) {
-      let startBold = title.toLowerCase().indexOf(inputText.toLowerCase())
-      let endBold = title.toLowerCase().indexOf(inputText.toLowerCase())+ inputText.length
+   if (titleLower.includes(inputTextLower)) {
+      let startBold = titleLower.indexOf(inputTextLower)
+      let endBold = titleLower.indexOf(inputTextLower)+ inputText.length
       const boldedLetters2 =  
           <>
           <span >{`${title.slice(0, startBold)}`}</span> 
@@ -41,23 +34,9 @@ const SearchResultsMenu: React.FC<MenuType> = ({inputText, setInputText}) => {
 
           return <p key={`${title + Math.random()}`} className='p-3 hover:bg-slate-100 cursor-pointer'
           onClick={() => onCLickHandler(title) }>{boldedLetters2}</p>
-    }else if (description.toLowerCase().startsWith(inputText.toLowerCase())){
-      const boldedLetters3 =  
-          <>
-          <span className='text-sm text-black'>{`${description.slice(0, inputText.length)}`}</span> 
-          <span className="text-xs">{`${description.slice(inputText.length)}`}</span>
-          </>
-
-          return (
-            <div key={`${title + Math.random()}`} className= 'p-3 hover:bg-slate-100 cursor-pointer'
-            onClick={() => onCLickHandler(title) }>
-              <p>{title}</p>
-              {boldedLetters3}
-            </div>
-            )
-    } else if (description.toLowerCase().includes(inputText.toLowerCase())){
-        let startBold = description.toLowerCase().indexOf(inputText.toLowerCase())
-        let endBold = description.toLowerCase().indexOf(inputText.toLowerCase())+ inputText.length
+    }else if (descriptionLower.includes(inputTextLower)){
+        let startBold = descriptionLower.indexOf(inputTextLower)
+        let endBold = descriptionLower.indexOf(inputTextLower)+ inputText.length
         const boldedLetters4 =  
             <>
             <span className="text-xs">{`${description.slice(0, startBold)}`}</span> 
