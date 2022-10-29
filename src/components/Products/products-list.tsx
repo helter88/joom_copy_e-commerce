@@ -53,7 +53,7 @@ const ProductsList = () => {
   const dataSliced = sortedProducts?.slice(0,numProducts)
 
 
-  const allProducts = dataSliced?.map(({title, price, images, id}:ResponseProduct) => <Card key={id} price={`PLN ${price}`} title={title} imageSource={images[0]}/>)
+  const allProducts = dataSliced?.map(({title, price, images, id}:ResponseProduct) => <Card key={id} price={`PLN ${price}`} title={title} imageSource={images[0]} id={id}/>)
   return (
     <div className="mt-2 pt-5 flex flex-col">
       <main className="mx-auto w-4/5 flex flex-wrap gap-x-5">

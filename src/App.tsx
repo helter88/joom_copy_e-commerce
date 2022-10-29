@@ -6,6 +6,7 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
 import PageNotFound from './pages/page-not-found';
 import Products from './components/products';
+import SingleProduct from './pages/single-product';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <CategoryNavigation />
         <Routes >
           <Route path='/' element ={<Products />} />
+          <Route path='/product/:id' element ={<SingleProduct/>} />
           <Route path='*' element ={<PageNotFound />} />
         </Routes>
         
