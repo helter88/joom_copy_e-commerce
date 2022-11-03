@@ -8,14 +8,15 @@ export interface CardData {
     id: number
 }
 
-const noImagePath = "https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+ export const noImagePath = "https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+
+ export const onImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) =>{
+  e.currentTarget.src = noImagePath
+}   
 
 const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
 
-  const onImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) =>{
-    e.currentTarget.src = noImagePath
-  }    
-  console.log(id);
+ 
   const dynamicScore = Number(((Math.random()* (5-1) + 1)).toFixed(1))
   
  
