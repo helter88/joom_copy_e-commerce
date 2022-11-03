@@ -1,4 +1,6 @@
 
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import FiveStarScore from '../ui/five-star-score';
 
 export interface CardData {
@@ -16,16 +18,20 @@ export interface CardData {
 
 const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
 
- 
-  const dynamicScore = Number(((Math.random()* (5-1) + 1)).toFixed(1))
+  const [dynamicScore, setDynamicScore] = useState<number>(1)
+
+  useEffect( () => {
+    const virtualScore = Number(((Math.random()* (5-1) + 1)).toFixed(1))
+    setDynamicScore(virtualScore)
+  },[])
   
-  const onHandleClick = ()=> {
-    window.open(`/product/${id}`, '_blank', 'noopener,noreferrer')
-  }
+  
+ 
  
   return (
-    <div className="w-1/5 pb-8 cursor-pointer"
-      onClick={onHandleClick}
+    <Link className="w-1/5 pb-8 cursor-pointer"
+      to={`/product/${id}`}  target="_blank"
+      state={{score: 'Nie wyświetla'}}
     >
         <div className='overflow-hidden rounded-xl'>
            <img className='rounded-xl hover:scale-110 transition-all duration-500' src={imageSource || noImagePath} alt='product photo' onError={onImageError} /> 
@@ -37,7 +43,7 @@ const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
           fillColor="rgb(248 113 113)" stroke="rgb(248 113 113)" emptyColor="rgb(241 245 249)" />
         </div>
         <p className='text-xs'>{title}</p>
-    </div>
+    </Link>
   )
 }
 
