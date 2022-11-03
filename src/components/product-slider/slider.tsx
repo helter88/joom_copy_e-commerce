@@ -1,17 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-import Axios from 'axios'
 import React, { useState } from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation, Thumbs} from 'swiper';
 import './slider.css'
 import { onImageError } from '../products/card';
+import useSingleProduct from '../../hooks/use-single-product';
 
-const fetchProduct = () =>{
-    return Axios.get("https://api.escuelajs.co/api/v1/products/1").then(resp => resp.data)
-}
+
 
 const Slider = () => {
-    const {data:product} = useQuery(['product'], fetchProduct)
+    const {product} = useSingleProduct()
 
     const [activeThumb, setActiveThumb]= useState()
 
