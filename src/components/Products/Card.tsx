@@ -19,9 +19,14 @@ const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
  
   const dynamicScore = Number(((Math.random()* (5-1) + 1)).toFixed(1))
   
+  const onHandleClick = ()=> {
+    window.open(`/product/${id}`, '_blank', 'noopener,noreferrer')
+  }
  
   return (
-    <div className="w-1/5 pb-8 cursor-pointer">
+    <div className="w-1/5 pb-8 cursor-pointer"
+      onClick={onHandleClick}
+    >
         <div className='overflow-hidden rounded-xl'>
            <img className='rounded-xl hover:scale-110 transition-all duration-500' src={imageSource || noImagePath} alt='product photo' onError={onImageError} /> 
         </div>
