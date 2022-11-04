@@ -33,6 +33,10 @@ function ProductInfo() {
             <AddToCartButton />
             <BuyNowButton />
         </div>
+        <div>
+            <p className='text-lg font-medium text-stone-800 my-2'>Description:</p>
+            <p className='text-sm leading-6 text-stone-800'>{product?.description}</p>
+        </div>
         
     </>
   )
