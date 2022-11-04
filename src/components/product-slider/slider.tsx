@@ -4,13 +4,14 @@ import {Navigation, Thumbs} from 'swiper';
 import './slider.css'
 import { onImageError } from '../products/card';
 import useSingleProduct from '../../hooks/use-single-product';
+import SwiperCore  from 'swiper';
 
 
 
 const Slider = () => {
     const {product} = useSingleProduct()
 
-    const [activeThumb, setActiveThumb]= useState()
+    const [activeThumb, setActiveThumb]= useState<SwiperCore>()
 
     const displayPhotos = product?.images?.map((image: string, index:number)=>(
         <SwiperSlide key={index} >

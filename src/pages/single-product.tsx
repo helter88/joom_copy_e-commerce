@@ -4,10 +4,11 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import Slider from '../components/product-slider/slider'
-import useSingleProduct from '../hooks/use-single-product'
+import ProductInfo from '../components/products/product-info'
+
 
 const SingleProduct = () => {
-  const {product} = useSingleProduct()
+  
   const location = useLocation()
 
   const score = location?.state?.score
@@ -18,12 +19,7 @@ const SingleProduct = () => {
         <Slider />
       </div>
       <div className='ml-32'>
-        <p className='text-2xl font-medium text-stone-800'>
-          {product?.title}
-        </p>
-        <p>
-          {score}
-        </p>
+       <ProductInfo />
       </div>
     </div>
   )
