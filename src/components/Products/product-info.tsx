@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import useSingleProduct from '../../hooks/use-single-product'
+import AddToCartButton from '../ui/buttons/add-to-cart-button'
+import BuyNowButton from '../ui/buttons/buy-now-button'
 import FiveStarScore from '../ui/five-star-score'
 
 
@@ -27,9 +29,9 @@ function ProductInfo() {
         <p className='text-4xl mt-8'>
             PLN {product?.price}
         </p>
-        <div>
-            <button>Add to cart</button>
-            <button>Buy now</button>
+        <div className='my-8 space-x-3'>
+            <AddToCartButton />
+            <BuyNowButton />
         </div>
         
     </>

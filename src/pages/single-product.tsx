@@ -18,7 +18,7 @@ const SingleProduct = () => {
       <div className='flex flex-row-reverse '>
         <Slider />
       </div>
-      <div className='ml-32'>
+      <div className='ml-28'>
        <ProductInfo />
       </div>
     </div>
