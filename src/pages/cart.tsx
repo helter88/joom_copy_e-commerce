@@ -1,6 +1,6 @@
-import React from 'react'
+import {ReactComponent as Bin} from '../assets/img/bin-icon.svg';
 
-function Cart() {
+const Cart = () => {
   return (
     <div className='mt-16 bg-slate-100 absolute inset-x-0'>
       <div className='px-72'>
@@ -9,10 +9,11 @@ function Cart() {
             <div className='col-span-2 flex justify-between my-4
             bg-white p-5 rounded-xl'>
                 <div>
-                <p>Select all</p>  
+                    <p className="text-sm font-medium">Select all</p>  
                 </div>
-                <div>
-                <p>Remove all selected</p>  
+                <div className='flex gap-x-2'>
+                    <Bin className='text-red-400'/>
+                    <p className="text-sm text-red-400">Remove all selected</p>  
                 </div>  
             </div>
             <div className='col-span-1'>
