@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import PageNotFound from './pages/page-not-found';
 import Products from './components/products';
 import SingleProduct from './pages/single-product';
+import Cart from './pages/cart';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Routes >
           <Route path='/' element ={<Products />} />
           <Route path='/product/:id' element ={<SingleProduct/>} />
+          <Route path='/cart' element ={<Cart/>} />
           <Route path='*' element ={<PageNotFound />} />
         </Routes>
         
