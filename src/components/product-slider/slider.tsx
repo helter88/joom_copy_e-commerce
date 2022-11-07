@@ -40,8 +40,9 @@ const Slider = () => {
       </Swiper>
       <Swiper 
         direction={"vertical"}
-        // onSwiper={setActiveThumb}
+        onSwiper={setActiveThumb}
         loop={true}
+        watchSlidesProgress
         spaceBetween={10}
         slidesPerView={2}
         modules={[Navigation, Thumbs]}
