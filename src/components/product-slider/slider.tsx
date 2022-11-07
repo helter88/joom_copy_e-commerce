@@ -30,7 +30,9 @@ const Slider = () => {
         navigation={true}
         modules={[Navigation, Thumbs]}
         grabCursor={true}
-        thumbs={{swiper: activeThumb}}
+        thumbs={{
+          swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
+        }}
         className='product-main'
 
       >
