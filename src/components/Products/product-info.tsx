@@ -30,8 +30,8 @@ function ProductInfo() {
             PLN {product?.price}
         </p>
         <div className='my-8 space-x-3'>
-            <AddToCartButton />
-            <BuyNowButton />
+            <AddToCartButton  />
+            <BuyNowButton productID ={product?.id} />
         </div>
         <div>
             <p className='text-lg font-medium text-stone-800 my-2'>Description:</p>

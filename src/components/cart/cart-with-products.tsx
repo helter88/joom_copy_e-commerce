@@ -1,5 +1,5 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
-import CartProduct from '../products/cart-product';
+import CartProduct from './cart-product';
 import YourCart from './your-cart';
 
 const CartWithProducts = () => {
