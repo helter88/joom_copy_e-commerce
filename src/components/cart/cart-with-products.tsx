@@ -1,5 +1,6 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
 import CartProduct from '../products/cart-product';
+import YourCart from './your-cart';
 
 const CartWithProducts = () => {
   return (
@@ -27,7 +28,7 @@ const CartWithProducts = () => {
                  </div>
             </div>
             <div className='col-span-1'>
-                <p>Your cart</p>
+                <YourCart />
             </div>
         </div>
             
