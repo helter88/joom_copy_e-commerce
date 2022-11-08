@@ -24,7 +24,7 @@ const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
                 <div className='flex flex-col justify-between h-full'>
                   <p className='text-sm'>{product?.title}</p>
                   <div className='flex gap-x-0.5'>
-                    <QuantityManager quantity={quantity} />
+                    <QuantityManager quantity={quantity} id={id} />
                     <div className='relative flex'>
                       <Bin className='ml-4 text-slate-400 hover:text-red-400 cursor-pointer'
                         onClick={updateBinState} />
