@@ -1,4 +1,4 @@
-import { useEffect, useTransition } from "react";
+import { useTransition } from "react";
 import { useNavigate } from "react-router-dom"
 import useChosenProducts from "../../../hooks/use-chosen-products"
 
