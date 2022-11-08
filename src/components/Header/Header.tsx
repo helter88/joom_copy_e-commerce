@@ -1,9 +1,9 @@
 import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
 import FunctionalIcon from './functional-icon';
-import Input from './input';
 import SearchBar from './search-bar';
 
 const Header = () => {
+ 
   return (
     <div className='my-12 flex items-center'>
       <div className='first-line mr-10 cursor-pointer'>
