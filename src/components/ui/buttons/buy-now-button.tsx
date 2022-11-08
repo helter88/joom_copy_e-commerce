@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import useChosenProducts from "../../../hooks/use-chosen-products"
 
 const BuyNowButton = ({productID}:{productID:string}) => {
     const navigate = useNavigate()
+    const [products, setProducts] = useChosenProducts()
     const onClickHandler = () => {
-      console.log(productID)
+      console.log(products)
       navigate('/cart')
     }
     return (
