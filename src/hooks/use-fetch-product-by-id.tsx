@@ -1,12 +1,9 @@
 
-
 import { useQuery } from '@tanstack/react-query'
 import Axios from 'axios'
-import { useParams } from 'react-router-dom';
 
-const useSingleProduct = () => {
-    const {id} = useParams();
-
+const useFetchProductById = (id:string) => {
+    
     const fetchProduct = () =>{
         return Axios.get(`https://api.escuelajs.co/api/v1/products/${id}`).then(resp => resp.data)
     }
@@ -15,4 +12,4 @@ const useSingleProduct = () => {
   return {product}
 }
 
-export default useSingleProduct
+export default useFetchProductById

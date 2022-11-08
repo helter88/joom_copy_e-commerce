@@ -5,14 +5,14 @@ const ProductReviews = () => {
     const {comments} = useComments();
     const allComents = comments?.comments.map((comment:any) =>{
         return(
-            <>
+            <div key={comment?.id}>
                 <p className='text-sm font-medium  text-stone-800'>
                     {comment?.user?.username}
                 </p>
                 <p className='text-sm  text-stone-800 opacity-90 my-3 pb-2 border-b'>
                     {comment?.body}
                 </p>
-            </>
+            </div>
             
         )
     })

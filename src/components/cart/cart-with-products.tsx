@@ -7,8 +7,9 @@ import YourCart from './your-cart';
 const CartWithProducts = () => {
   const [products] = useChosenProducts();
   const allCartProducts = products?.map((product:ChosenProductType) => {
-    <CartProduct key={product.id} checked={product.checked}
+    return (<CartProduct key={product.id} checked={product.checked}
       id={product.id} quantity={product.quantity}/> 
+    )
   })
   return (
     <>

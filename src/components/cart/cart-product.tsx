@@ -1,6 +1,10 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
+import useFetchProductById from '../../hooks/use-fetch-product-by-id';
+import { ChosenProductType } from '../ui/buttons/buy-now-button';
 
-const CartProduct = () => {
+const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
+  const {product} = useFetchProductById(id);
+
   return (
     <div className='flex justify-between mb-8 '>
        <div className='flex'>
