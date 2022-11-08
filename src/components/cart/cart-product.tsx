@@ -1,5 +1,6 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
 import useFetchProductById from '../../hooks/use-fetch-product-by-id';
+import { noImagePath, onImageError } from '../products/card';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 
 const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
@@ -12,13 +13,14 @@ const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
                 <input type="checkbox" className="mt-2 border border-red-400 w-5 h-5 bg-white
                          accent-red-500 cursor-pointer" />
                 <img className='w-28 rounded-lg'
-                    src="https://placeimg.com/640/480/any?r=0.591926261873231" />
+                    src={product?.images[0] || noImagePath} 
+                    alt='product photo' onError={onImageError}/>
                 <div className='flex flex-col justify-between h-full'>
-                  <p className='text-sm'>Handmade Fresh Table</p>
+                  <p className='text-sm'>{product?.title}</p>
                   <div className='flex gap-x-0.5'>
                     <button className='rounded-full  bg-slate-100 text-lg h-5 w-5
                       flex items-center justify-center'><span>-</span></button>
-                    <span className='text-sm h-5 w-5 text-center'>1</span>
+                    <span className='text-sm h-5 w-5 text-center'>{quantity}</span>
                     <button className='rounded-full bg-slate-100 text-lg h-5 w-5
                       flex items-center justify-center'><span>+</span></button>
                     <Bin className='ml-4 text-slate-400 hover:text-red-400 cursor-pointer' />
@@ -28,7 +30,7 @@ const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
             </div>
         </div>
         <div>
-            <p className='text-base font-medium'>PLN 149</p>
+            <p className='text-base font-medium'>{`PLN ${quantity * product?.price}`}</p>
         </div>
     </div>
   )
