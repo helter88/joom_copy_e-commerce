@@ -1,6 +1,7 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
 import useFetchProductById from '../../hooks/use-fetch-product-by-id';
 import { noImagePath, onImageError } from '../products/card';
+import BinPopover from '../ui/bin-popover';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 
 const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
@@ -23,9 +24,14 @@ const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
                     <span className='text-sm h-5 w-5 text-center'>{quantity}</span>
                     <button className='rounded-full bg-slate-100 text-lg h-5 w-5
                       flex items-center justify-center'><span>+</span></button>
-                    <Bin className='ml-4 text-slate-400 hover:text-red-400 cursor-pointer' />
+                    <div className='relative flex'>
+                      <Bin className='ml-4 text-slate-400 hover:text-red-400 cursor-pointer' />
+                      <BinPopover />
+                    </div>
+                    
                   </div>
                 </div>
+                
                 
             </div>
         </div>
