@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import useChosenProducts from "../../../hooks/use-chosen-products"
 
+export interface ChosenProductType {
+      id: string;
+      quantity: number;
+      checked: boolean;
+}
+
 const BuyNowButton = ({productID}:{productID:string}) => {
     const navigate = useNavigate()
     const [products, setProducts] = useChosenProducts()
@@ -9,7 +15,7 @@ const BuyNowButton = ({productID}:{productID:string}) => {
       quantity: 1,
       checked: true
     }
-    const isProductAlreadyChosen = products?.some((item:any) => item.id === productID )
+    const isProductAlreadyChosen = products?.some((item:ChosenProductType) => item.id === productID )
     const onClickHandler = () => {
       
       if(isProductAlreadyChosen){
