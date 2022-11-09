@@ -17,8 +17,10 @@ const BinPopover:React.FC<BinPopoverType> = ({id, updateBinState}) => {
     }
     
   return (
-    <div className='bg-white border shadow p-3 absolute left-10 -top-8 shadow-slate-200 
-        z-10 rounded-lg w-max flex flex-col items-center'> 
+    <div className='bg-white border shadow p-3 absolute left-12 -top-8 shadow-slate-200 
+        z-10 rounded-lg w-max flex flex-col items-center 
+        before:w-0 before:h-0 before:border-[10px] before:border-transparent
+         before:border-r-slate-200 before:absolute before:-left-5'> 
         <span className='text-sm'>Are you sure that you want to remove item from your cart?</span>
         <div className='flex gap-x-2 mt-3'>
             <button className='text-sm py-0.5 px-10 bg-red-400
