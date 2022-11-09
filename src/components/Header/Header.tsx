@@ -1,3 +1,4 @@
+import CartMenu from '../cart/cart-menu';
 import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
 import FunctionalIcon from './functional-icon';
 import SearchBar from './search-bar';
@@ -17,7 +18,10 @@ const Header = () => {
         <FunctionalIcon text='Notyfications' icon='bell'/>
         <FunctionalIcon text='Sign in' icon='person'/>
         <FunctionalIcon text='My orders' icon='box'/>
-        <FunctionalIcon text='Shopping cart' icon='cart'/>
+        <div className='relative'>
+          <FunctionalIcon text='Shopping cart' icon='cart'/>
+          <CartMenu />
+        </div>
       </div>
     </div>
   )
