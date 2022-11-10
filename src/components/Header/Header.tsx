@@ -18,7 +18,9 @@ const Header = () => {
         <FunctionalIcon text='Notyfications' icon='bell'/>
         <FunctionalIcon text='Sign in' icon='person'/>
         <FunctionalIcon text='My orders' icon='box'/>
-        <div className='relative'>
+        <div className="relative before:absolute before:w-4 before:h-4 before:bg-red-400
+          before:text-white before:content-['2'] before:text-xs before:text-center 
+          before:rounded-full before:left-14">
           <FunctionalIcon text='Shopping cart' icon='cart'/>
           <CartMenu />
         </div>
