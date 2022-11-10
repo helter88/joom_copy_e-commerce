@@ -9,6 +9,7 @@ export interface QuantityManagerType {
 
 const QuantityManager: React.FC<QuantityManagerType> = ({quantity, id}) => {
     const [products, setProducts] = useChosenProducts();
+
     const subtractQuantity = () => {
         if(quantity === 1){
             return

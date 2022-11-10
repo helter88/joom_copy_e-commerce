@@ -6,6 +6,8 @@ export interface ChosenProductType {
       id: string;
       quantity: number;
       checked: boolean;
+      isSelected: boolean;
+      onSelect: (id: string) => void
 }
 
 const BuyNowButton = ({productID}:{productID:string}) => {
@@ -25,7 +27,6 @@ const BuyNowButton = ({productID}:{productID:string}) => {
           setProducts((items:ChosenProductType[])=> [prodObj, ...items])
           startTransition(() => navigate('/cart'))
         }
-        
     }
 
     return (

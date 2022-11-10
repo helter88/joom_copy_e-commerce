@@ -21,7 +21,7 @@ const Input: React.FC<InputType> = ({inputText, onChangeHandler}) => {
 
   return (
     <div className="w-full relative">
-      <input className="bg-slate-100 rounded-xl h-11 w-full pl-4 outline-none" 
+      <input className="bg-slate-100 rounded-xl h-11 w-full min-w-[20rem] pl-4 outline-none" 
       type='text' placeholder="Search"
       onChange={onChangeHandler} value={inputText}
       onKeyDown={onHandleKeyDown}

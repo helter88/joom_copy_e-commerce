@@ -6,7 +6,7 @@ import BinPopover from '../ui/bin-popover';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 import QuantityManager from '../ui/quantity-manager';
 
-const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
+const CartProduct = ({checked, id, quantity, isSelected, onSelect}: ChosenProductType) => {
   const {product} = useFetchProductById(id);
   const [isBinClicked, setIsBinClicked] = useState(false)
 
@@ -14,9 +14,11 @@ const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
 
   return (
     <div className='flex justify-between mb-8 '>
-       <div className='flex'>
+       <div className='flex'> 
             <div className='flex items-start gap-x-2'>
-                <input type="checkbox" className="mt-2 border border-red-400 w-5 h-5 bg-white
+                <input checked={isSelected}
+                onChange={() => onSelect(id)}
+                 type="checkbox" className="mt-2 border border-red-400 w-5 h-5 bg-white
                          accent-red-500 cursor-pointer" />
                 <img className='w-28 rounded-lg'
                     src={product?.images[0] || noImagePath} 
