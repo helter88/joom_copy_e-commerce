@@ -14,7 +14,19 @@ const useChosenProducts = () => {
       useEffect(() => {
         // storing input name
         localStorage.setItem('products', JSON.stringify(products));
+        window.dispatchEvent(new Event('storage'))
       }, [products]);
+
+      useEffect(() => {
+        const handleStorage = () => {
+          setProducts(getStorageValue());
+          
+          
+        }
+      
+        window.addEventListener('storage', handleStorage)
+        return () => window.removeEventListener('storage', handleStorage)
+      }, [])
 
   return [products, setProducts]
   
