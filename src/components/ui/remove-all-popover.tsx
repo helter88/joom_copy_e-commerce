@@ -17,7 +17,9 @@ const RemoveAllPopover:React.FC<RemoveAllPopoverType> = ({openStatus, setStatus}
   return (
     <div className={`absolute left-64 -top-8 bg-white border shadow p-3
          shadow-slate-200 z-10 rounded-lg w-max 
-         flex flex-col items-center ${activeStyle} transition-all`}>
+         flex flex-col items-center ${activeStyle} transition-all
+         before:w-0 before:h-0 before:border-[10px] before:border-transparent
+         before:border-l-slate-200 before:absolute before:-right-5`}>
         <span className='text-sm'>Are you sure that you 
             want to remove 2 items from your cart?
         </span>

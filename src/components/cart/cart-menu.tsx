@@ -5,7 +5,7 @@ const CartMenu = () => {
   return (
     <div className='absolute w-80 bg-white border shadow p-3
     shadow-slate-200 z-10 rounded-lg -left-28 mt-3 hidden'>
-      <CartMenuTop />
+      <CartMenuTop /> 
       <div className="h-48 overflow-y-scroll">
         <CartMenuProduct />
         <CartMenuProduct />

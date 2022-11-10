@@ -1,4 +1,4 @@
-import React from 'react'
+
 import useChosenProducts from '../../hooks/use-chosen-products';
 import { ChosenProductType } from './buttons/buy-now-button';
 
