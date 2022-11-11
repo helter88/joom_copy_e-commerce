@@ -1,4 +1,3 @@
-// import useChosenProducts from '../../hooks/use-chosen-products'
 import { useLocalStorage } from "usehooks-ts";
 import { ChosenProductType } from './buttons/buy-now-button';
 

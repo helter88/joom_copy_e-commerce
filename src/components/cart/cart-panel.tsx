@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
 import RemoveAllPopover from '../ui/remove-all-popover';
+import { useLocalStorage } from "usehooks-ts";
+import { ChosenProductType } from '../ui/buttons/buy-now-button';
 
 const CartPanel = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const toggle = () => setIsOpen((stat)=> !stat)
     const onHandleRemoveAll = () => {
         toggle()
     }
+    const numberOfAllProducts = products?.filter((product:ChosenProductType) =>
+      product.checked === true
+      ).length
   return (
     <div className='flex justify-between my-4
     bg-white p-5 rounded-xl'>
@@ -22,7 +28,9 @@ const CartPanel = () => {
        </div>
         <div className='flex gap-x-2 cursor-pointer' onClick={onHandleRemoveAll}>
             <Bin className='text-red-400'/>
-            <p className="text-sm text-red-400">Remove all selected</p>  
+            <p className="text-sm text-red-400">
+              {`Remove all selected (${numberOfAllProducts})`}
+            </p>  
         </div>
        
    </div>
