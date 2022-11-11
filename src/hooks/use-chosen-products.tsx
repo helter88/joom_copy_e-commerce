@@ -12,21 +12,23 @@ const useChosenProducts = () => {
       });
 
       useEffect(() => {
-        // storing input name
-        localStorage.setItem('products', JSON.stringify(products));
-        window.dispatchEvent(new Event('storage'))
-      }, [products]);
+        // const handleStorage = () => {
+        //   getStorageValue();
+          
+        // }
+        console.log('from eventlistener')
+        window.addEventListener('storage', (e)=> console.log(e.newValue))
+        return () => window.removeEventListener('storage', (e)=> console.log(e.newValue))
+      }, [])
 
       useEffect(() => {
-        const handleStorage = () => {
-          setProducts(getStorageValue());
-          
-          
-        }
-      
-        window.addEventListener('storage', handleStorage)
-        return () => window.removeEventListener('storage', handleStorage)
-      }, [])
+        
+        localStorage.setItem('products', JSON.stringify(products));
+        window.dispatchEvent(new Event('storage'))
+        console.log("info from dispatch")
+      }, [products]);
+
+     
 
   return [products, setProducts]
   

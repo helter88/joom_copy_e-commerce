@@ -23,7 +23,8 @@ const BuyNowButton = ({productID}:{productID:string}) => {
           navigate('/cart')
         }else{
           setProducts((items:ChosenProductType[])=> [prodObj, ...items])
-          startTransition(() => navigate('/cart'))
+          setTimeout(() => navigate('/cart'), 300)
+         
         }
         
     }
