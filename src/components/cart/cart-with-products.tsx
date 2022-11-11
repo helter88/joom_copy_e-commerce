@@ -15,7 +15,7 @@ const CartWithProducts = () => {
   })
   return (
     <>
-      <div className='px-72'>
+      <div className='px-4  2xl:px-56 xl:px-48 lg:px-28 md:px-10'>
         <p className='text-2xl font-medium mt-8 mb-3'>My cart</p>
         <div className='grid grid-cols-3 gap-x-8'>
             <div className='col-span-2 '>
