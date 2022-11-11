@@ -13,6 +13,10 @@ const SearchBar = () => {
 
   return (
     <>
+      <div className='min-w-[20rem]'>
+       <Input inputText={inputText} onChangeHandler={onChangeHandler} /> 
+      </div>
+      
       <SearchResultsMenu inputText={inputText} setInputText={setInputText} />
     </>
   )

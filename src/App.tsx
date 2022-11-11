@@ -13,7 +13,7 @@ import Cart from './pages/cart';
 const App = () => {
   const client = new QueryClient();
   return (
-    <div className="App px-72">
+    <div className="App px-4  2xl:px-56 xl:px-48 lg:px-28 md:px-10">
       <QueryClientProvider client={client}>
         <Navigation />
         <Header />
