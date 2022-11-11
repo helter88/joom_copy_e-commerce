@@ -1,6 +1,7 @@
 import { useTransition } from "react";
 import { useNavigate } from "react-router-dom"
-import useChosenProducts from "../../../hooks/use-chosen-products"
+import { useLocalStorage } from "usehooks-ts";
+
 
 export interface ChosenProductType {
       id: string;
@@ -11,7 +12,7 @@ export interface ChosenProductType {
 const BuyNowButton = ({productID}:{productID:string}) => {
     const navigate = useNavigate()
     const [isPending, startTransition] = useTransition();
-    const [products, setProducts] = useChosenProducts()
+    const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[])
     const prodObj ={
       id: productID,
       quantity: 1,
@@ -22,7 +23,7 @@ const BuyNowButton = ({productID}:{productID:string}) => {
         if(isProductAlreadyChosen){
           navigate('/cart')
         }else{
-          setProducts((items:ChosenProductType[])=> [prodObj, ...items])
+          setProducts((items:ChosenProductType[])=> [prodObj,...items] )
           setTimeout(() => navigate('/cart'), 300)
          
         }

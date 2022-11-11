@@ -1,6 +1,8 @@
 import { useTransition } from "react";
-import useChosenProducts from '../../hooks/use-chosen-products'
+// import useChosenProducts from '../../hooks/use-chosen-products'
 import { ChosenProductType } from './buttons/buy-now-button'
+import { useLocalStorage } from "usehooks-ts";
+
 
 export interface BinPopoverType {
     id:string;
@@ -8,7 +10,7 @@ export interface BinPopoverType {
 }
 
 const BinPopover:React.FC<BinPopoverType> = ({id, updateBinState}) => {
-    const [products, setProducts] = useChosenProducts()
+    const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const [isPending, startTransition] = useTransition();
     const onYesHandler = () =>{
         setProducts((items:ChosenProductType[]) => 

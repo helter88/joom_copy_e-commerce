@@ -1,4 +1,6 @@
-import useChosenProducts from '../../hooks/use-chosen-products'
+// import useChosenProducts from '../../hooks/use-chosen-products'
+import { useLocalStorage } from "usehooks-ts";
+import { ChosenProductType } from './buttons/buy-now-button';
 
 interface RemoveAllPopoverType {
     openStatus: boolean,
@@ -6,7 +8,7 @@ interface RemoveAllPopoverType {
 }
 
 const RemoveAllPopover:React.FC<RemoveAllPopoverType> = ({openStatus, setStatus}) => {
-    const [products, setProducts] = useChosenProducts()
+    const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const onYesHandler= () => {
         setProducts([]);
         setStatus();

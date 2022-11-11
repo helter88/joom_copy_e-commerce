@@ -1,12 +1,13 @@
 import {ReactComponent as Bin} from '../../assets/img/bin-icon.svg';
-import useChosenProducts from '../../hooks/use-chosen-products';
+// import useChosenProducts from '../../hooks/use-chosen-products';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
+import { useLocalStorage } from "usehooks-ts";
 import CartPanel from './cart-panel';
 import CartProduct from './cart-product';
 import YourCart from './your-cart';
 
 const CartWithProducts = () => {
-  const [products] = useChosenProducts();
+  const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
   const allCartProducts = products?.map((product:ChosenProductType) => {
     return (<CartProduct key={product.id} checked={product.checked}
       id={product.id} quantity={product.quantity}/> 

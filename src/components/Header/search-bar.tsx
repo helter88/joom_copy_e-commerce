@@ -13,7 +13,6 @@ const SearchBar = () => {
 
   return (
     <>
-      <Input inputText={inputText} onChangeHandler={onChangeHandler} />
       <SearchResultsMenu inputText={inputText} setInputText={setInputText} />
     </>
   )

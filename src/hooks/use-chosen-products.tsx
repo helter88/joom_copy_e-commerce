@@ -11,15 +11,15 @@ const useChosenProducts = () => {
         return getStorageValue();
       });
 
-      useEffect(() => {
-        // const handleStorage = () => {
-        //   getStorageValue();
+      // useEffect(() => {
+      //   const handleStorage = () => {
+      //     getStorageValue();
           
-        // }
-        console.log('from eventlistener')
-        window.addEventListener('storage', (e)=> console.log(e.newValue))
-        return () => window.removeEventListener('storage', (e)=> console.log(e.newValue))
-      }, [])
+      //   }
+      //   console.log('from eventlistener')
+      //   window.addEventListener('storage', handleStorage)
+      //   return () => window.removeEventListener('storage', handleStorage)
+      // }, [products, setProducts])
 
       useEffect(() => {
         

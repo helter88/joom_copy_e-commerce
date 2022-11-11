@@ -1,6 +1,7 @@
 
-import useChosenProducts from '../../hooks/use-chosen-products';
+// import useChosenProducts from '../../hooks/use-chosen-products';
 import { ChosenProductType } from './buttons/buy-now-button';
+import { useLocalStorage } from "usehooks-ts";
 
 export interface QuantityManagerType {
     quantity: number;
@@ -8,7 +9,7 @@ export interface QuantityManagerType {
 }
 
 const QuantityManager: React.FC<QuantityManagerType> = ({quantity, id}) => {
-    const [products, setProducts] = useChosenProducts();
+    const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const subtractQuantity = () => {
         if(quantity === 1){
             return
