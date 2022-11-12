@@ -5,12 +5,21 @@ import { noImagePath, onImageError } from '../products/card';
 import BinPopover from '../ui/bin-popover';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 import QuantityManager from '../ui/quantity-manager';
+import { useLocalStorage} from 'usehooks-ts';
 
 const CartProduct = ({checked, id, quantity}: ChosenProductType) => {
-  const {product} = useFetchProductById(id);
+  const {product, isError} = useFetchProductById(id);
   const [isBinClicked, setIsBinClicked] = useState(false)
+  const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
 
   const updateBinState = () => setIsBinClicked(stat=> !stat)
+
+  if (isError) {
+    setProducts((prod:ChosenProductType[])=>
+              prod.filter((item:ChosenProductType)=> item.id !== id)
+    )
+    return(<></>);
+  }
 
   return (
     <div className='flex justify-between mb-8 '>
