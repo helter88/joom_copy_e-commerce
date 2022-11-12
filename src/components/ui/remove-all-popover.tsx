@@ -9,11 +9,17 @@ interface RemoveAllPopoverType {
 const RemoveAllPopover:React.FC<RemoveAllPopoverType> = ({openStatus, setStatus}) => {
     const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const onYesHandler= () => {
-        setProducts([]);
+        setProducts((prev:ChosenProductType[])=>{
+            return prev.filter((prod:ChosenProductType)=> prod.checked === false)
+        });
         setStatus();
 
     }
     const activeStyle= openStatus ? 'scale-100' : 'scale-0'
+
+    const numItemsToRemove = products.filter((product:ChosenProductType)=>
+        product.checked === true
+    ).length
 
   return (
     <div className={`absolute left-64 -top-8 bg-white border shadow p-3
@@ -22,7 +28,7 @@ const RemoveAllPopover:React.FC<RemoveAllPopoverType> = ({openStatus, setStatus}
          before:w-0 before:h-0 before:border-[10px] before:border-transparent
          before:border-l-slate-200 before:absolute before:-right-5`}>
         <span className='text-sm'>Are you sure that you 
-            want to remove 2 items from your cart?
+            want to remove {numItemsToRemove} items from your cart?
         </span>
         <div className='flex gap-x-2 mt-3'>
             <button className='text-sm py-0.5 px-10 bg-red-400

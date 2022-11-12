@@ -37,6 +37,10 @@ const CartPanel = () => {
       return newState
     }
     )
+
+    const onClickAccess= numberOfAllProducts ===0 ? {}: {onClick: onHandleRemoveAll}
+    const disabledStyle = numberOfAllProducts ===0 ? "cursor-not-allowed opacity-40"
+          : "cursor-pointer"
   return (
     <div className='flex justify-between my-4
     bg-white p-5 rounded-xl'>
@@ -49,7 +53,7 @@ const CartPanel = () => {
             </div>
            <RemoveAllPopover openStatus={isOpen} setStatus={toggle}/>
        </div>
-        <div className='flex gap-x-2 cursor-pointer' onClick={onHandleRemoveAll}>
+        <div className={`flex gap-x-2 ${disabledStyle}`} {...onClickAccess}>
             <Bin className='text-red-400'/>
             <p className="text-sm text-red-400">
               {`Remove all selected (${numberOfAllProducts})`}
