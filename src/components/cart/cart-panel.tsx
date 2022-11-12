@@ -6,7 +6,7 @@ import { ChosenProductType } from '../ui/buttons/buy-now-button';
 
 const CartPanel = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
+    const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
     const toggle = () => setIsOpen((stat)=> !stat)
     const onHandleRemoveAll = () => {
         toggle()
@@ -14,12 +14,35 @@ const CartPanel = () => {
     const numberOfAllProducts = products?.filter((product:ChosenProductType) =>
       product.checked === true
       ).length
+
+    const isAllChecked = products?.every((product:ChosenProductType) =>
+      product.checked === true
+    )
+    const setChange =() => setProducts((prev:ChosenProductType[])=> {
+        let newState:ChosenProductType[]
+       if (isAllChecked) {
+         newState = prev.map((item:ChosenProductType)=> {
+          item.checked = false
+
+          return item
+      })
+      }else{
+        newState = prev.map((item:ChosenProductType)=> {
+          item.checked = true
+
+        return item
+      })
+      
+      }
+      return newState
+    }
+    )
   return (
     <div className='flex justify-between my-4
     bg-white p-5 rounded-xl'>
       <div className= 'flex relative'>
             <div className='flex items-center gap-x-2'>
-              <input type="checkbox" className="border border-red-400 w-5 h-5
+              <input checked={isAllChecked} onChange={setChange} type="checkbox" className="border border-red-400 w-5 h-5
                bg-white accent-red-500 cursor-pointer " />
               <label htmlFor="checked-checkbox" className="text-sm 
                 font-medium">Select all</label>  
