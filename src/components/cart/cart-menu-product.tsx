@@ -1,13 +1,18 @@
 import React from 'react'
+import useFetchProductById from '../../hooks/use-fetch-product-by-id';
 
-const CartMenuProduct = () => {
+
+
+const CartMenuProduct = ({prodId}: {prodId: string}) => {
+  const {product} = useFetchProductById(prodId);
+
   return (
     <div className='py-4 flex gap-x-2 border-b'>
         <img className='w-16 rounded-lg'
-            src='https://placeimg.com/640/480/any?r=0.9178516507833767' alt="product" />
+            src={product?.images[0]} alt="product" />
         <div>
-            <p className='text-sm font-medium mt-0.5'>PLN 519</p>
-            <p className='text-sm'>Handmade Fresh Table</p>
+            <p className='text-sm font-medium mt-0.5'>PLN {product?.price}</p>
+            <p className='text-sm'>{product?.title}</p>
         </div>
         
     </div>

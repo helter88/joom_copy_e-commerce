@@ -26,7 +26,7 @@ const CartMenu:React.FC<CartMenuType> = ({mouseEnterStatus}) => {
           "h-48 overflow-y-scroll"
 
   const productsList = products?.map((product:ChosenProductType) =>
-      <CartMenuProduct key={product?.id} />
+      <CartMenuProduct key={product?.id} prodId={product?.id} />
   )
  
   return (
