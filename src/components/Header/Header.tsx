@@ -15,7 +15,8 @@ declare module 'react' {
 
 const Header = () => {
   const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
-
+  const [isMouseEnter, setIsMouseEnter] = React.useState(false)
+  const toggle = () => setIsMouseEnter((prev)=> !prev)
   const numProdInCart = products.length
 
   const styleNumOfProductsInCart = numProdInCart !==0 ?
@@ -37,9 +38,10 @@ const Header = () => {
         <FunctionalIcon text='Notyfications' icon='bell'/>
         <FunctionalIcon text='Sign in' icon='person'/>
         <FunctionalIcon text='My orders' icon='box'/>
-        <div before={numProdInCart} className={`relative ${styleNumOfProductsInCart}`}>
+        <div before={numProdInCart} className={`relative ${styleNumOfProductsInCart}`}
+          onMouseEnter={toggle} onMouseLeave={toggle}>
           <FunctionalIcon text='Shopping cart' icon='cart'/>
-          <CartMenu />
+          <CartMenu mouseEnterStatus ={isMouseEnter} />
         </div>
       </div>
     </div>
