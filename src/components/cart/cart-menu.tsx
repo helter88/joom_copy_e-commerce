@@ -22,6 +22,9 @@ const CartMenu:React.FC<CartMenuType> = ({mouseEnterStatus}) => {
     }
   }
 
+  const productListContainerStyle = products.length >= 3 && 
+          "h-48 overflow-y-scroll"
+
   const productsList = products?.map((product:ChosenProductType) =>
       <CartMenuProduct key={product?.id} />
   )
@@ -30,7 +33,7 @@ const CartMenu:React.FC<CartMenuType> = ({mouseEnterStatus}) => {
     <div className={`absolute w-80 bg-white border shadow p-3
     shadow-slate-200 z-10 rounded-lg -left-28 mt-3 ${isHiddenStyle()}`}>
       <CartMenuTop /> 
-      <div className="h-48 overflow-y-scroll">
+      <div className={`${productListContainerStyle}`}>
         {productsList}
       </div>
       <div className="border-t pt-4 flex justify-center">
