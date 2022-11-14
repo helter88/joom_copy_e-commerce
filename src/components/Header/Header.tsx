@@ -16,11 +16,11 @@ declare module 'react' {
 
 const Header = () => {
   const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
-  const [isActiveWindow, setIsActiveWindow] = React.useState(false)
+  const [isOpenCartMenu, setIsOpenCartMenu] = useLocalStorage('isOpenCartMenu',false);
 
 
    const timoutFunction = () => {
-    setIsActiveWindow(false)
+    setIsOpenCartMenu(false)
   }
   const {reset, clear} = useTimeout(timoutFunction, 3000)
 
@@ -37,7 +37,7 @@ const Header = () => {
     reset()
   }
 
-  const openWindow = () => setIsActiveWindow(true);
+  const openWindow = () => setIsOpenCartMenu(true);
 
  const setMouseEnter = () => {
   clear()
@@ -58,7 +58,7 @@ const Header = () => {
         <div before={numProdInCart} className={`relative ${styleNumOfProductsInCart}`}
           onMouseEnter={openWindow} onMouseLeave={setMouseLeave}>
           <FunctionalIcon text='Shopping cart' icon='cart'/>
-          <CartMenu windowStatus ={isActiveWindow} handelMouseEnter={setMouseEnter} 
+          <CartMenu windowStatus ={isOpenCartMenu} handelMouseEnter={setMouseEnter} 
             />
         </div>
       </div>
