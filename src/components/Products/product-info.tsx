@@ -30,7 +30,7 @@ function ProductInfo() {
             PLN {product?.price}
         </p>
         <div className='my-8 space-x-3'>
-            <AddToCartButton  />
+            <AddToCartButton productID ={product?.id}  />
             <BuyNowButton productID ={product?.id} />
         </div>
         <div>
