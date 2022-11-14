@@ -2,9 +2,10 @@ import CartMenu from '../cart/cart-menu';
 import {ReactComponent as Logo} from './../../assets/img/Joom-logo.svg';
 import FunctionalIcon from './functional-icon';
 import SearchBar from './search-bar';
-import { useLocalStorage } from 'usehooks-ts';
+import { useLocalStorage} from 'usehooks-ts';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 import * as React from 'react';
+import useTimeout from '../../hooks/use-timeout';
 
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -15,8 +16,14 @@ declare module 'react' {
 
 const Header = () => {
   const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
-  const [isMouseEnter, setIsMouseEnter] = React.useState(false)
-  const toggle = () => setIsMouseEnter((prev)=> !prev)
+  const [isActiveWindow, setIsActiveWindow] = React.useState(false)
+
+
+   const timoutFunction = () => {
+    setIsActiveWindow(false)
+  }
+  const {reset, clear} = useTimeout(timoutFunction, 3000)
+
   const numProdInCart = products.length
 
   const styleNumOfProductsInCart = numProdInCart !==0 ?
@@ -24,7 +31,17 @@ const Header = () => {
   before:text-white before:content-[attr(before)] before:text-xs before:text-center 
   before:rounded-full before:left-14`
   : ''
- 
+
+
+  const setMouseLeave = () =>{
+    reset()
+  }
+
+  const openWindow = () => setIsActiveWindow(true);
+
+ const setMouseEnter = () => {
+  clear()
+ }
   return (
     <div className='my-12 flex items-center'>
       <div className='first-line mr-10 cursor-pointer'>
@@ -39,9 +56,10 @@ const Header = () => {
         <FunctionalIcon text='Sign in' icon='person'/>
         <FunctionalIcon text='My orders' icon='box'/>
         <div before={numProdInCart} className={`relative ${styleNumOfProductsInCart}`}
-          onMouseEnter={toggle} onMouseLeave={toggle}>
+          onMouseEnter={openWindow} onMouseLeave={setMouseLeave}>
           <FunctionalIcon text='Shopping cart' icon='cart'/>
-          <CartMenu mouseEnterStatus ={isMouseEnter} />
+          <CartMenu windowStatus ={isActiveWindow} handelMouseEnter={setMouseEnter} 
+            />
         </div>
       </div>
     </div>

@@ -5,17 +5,19 @@ import { ChosenProductType } from "../ui/buttons/buy-now-button";
 import { useLocation } from "react-router-dom";
 
 export interface CartMenuType {
-  mouseEnterStatus: boolean;
+  windowStatus: boolean;
+  handelMouseEnter: () => void;
+  handleMouseLeave?: () => void
 }
 
-const CartMenu:React.FC<CartMenuType> = ({mouseEnterStatus}) => {
+const CartMenu:React.FC<CartMenuType> = ({windowStatus, handelMouseEnter, handleMouseLeave}) => {
   const [products, setProducts] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
   const {pathname} = useLocation()
   
   const isHiddenStyle = () => {
-    if (products?.length !== 0 && mouseEnterStatus && pathname === "/cart"){
+    if (products?.length !== 0 && windowStatus && pathname === "/cart"){
       return "hidden"
-    }else if (products?.length !== 0 && mouseEnterStatus) {
+    }else if (products?.length !== 0 && windowStatus) {
       return ""
     }else {
       return "hidden"
@@ -28,10 +30,13 @@ const CartMenu:React.FC<CartMenuType> = ({mouseEnterStatus}) => {
   const productsList = products?.map((product:ChosenProductType) =>
       <CartMenuProduct key={product?.id} prodId={product?.id} />
   )
+
+
  
   return (
     <div className={`absolute w-80 bg-white border shadow p-3
-    shadow-slate-200 z-10 rounded-lg -left-28 mt-3 ${isHiddenStyle()}`}>
+    shadow-slate-200 z-10 rounded-lg -left-28 mt-3 ${isHiddenStyle()}`}
+    onMouseEnter={handelMouseEnter} onMouseLeave={handleMouseLeave}>
       <CartMenuTop /> 
       <div className={`${productListContainerStyle}`}>
         {productsList}
