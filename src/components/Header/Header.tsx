@@ -6,6 +6,7 @@ import { useLocalStorage} from 'usehooks-ts';
 import { ChosenProductType } from '../ui/buttons/buy-now-button';
 import * as React from 'react';
 import useTimeout from '../../hooks/use-timeout';
+import { useNavigate } from 'react-router-dom';
 
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -17,7 +18,7 @@ declare module 'react' {
 const Header = () => {
   const [products] = useLocalStorage<ChosenProductType[]|[]>('products',[]);
   const [isOpenCartMenu, setIsOpenCartMenu] = useLocalStorage('isOpenCartMenu',false);
-
+  const navigate = useNavigate();
 
    const timoutFunction = () => {
     setIsOpenCartMenu(false)
@@ -42,9 +43,14 @@ const Header = () => {
  const setMouseEnter = () => {
   clear()
  }
+
+ const onCLickLogoHandler = () => {
+  navigate('/')
+ }
   return (
     <div className='my-12 flex items-center'>
-      <div className='first-line mr-10 cursor-pointer'>
+      <div className='first-line mr-10 cursor-pointer'
+        onClick ={onCLickLogoHandler}>
         <Logo />
       </div>
       <div className='w-full'>
