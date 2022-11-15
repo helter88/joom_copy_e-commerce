@@ -17,6 +17,7 @@ Products reviews are fetched from: [DummyJSON API](https://dummyjson.com/ "click
 ## Features
 
   - Page with list of product cards
+    
   - Category list with clickable category
   - Clickable product card
   - Dynamic score stars
