@@ -80,5 +80,6 @@ Products reviews are fetched from: [DummyJSON API](https://dummyjson.com/ "click
   - Tailwind CSS
   - React Query
   - React Router v6
+  - React Custom Hooks
   - [Platzi Fake Store API](https://fakeapi.platzi.com/ "click to visit API website")
   - [DummyJSON API](https://dummyjson.com/ "click to visit API website")
