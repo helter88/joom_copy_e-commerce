@@ -26,10 +26,19 @@ Products reviews are fetched from: [DummyJSON API](https://dummyjson.com/ "click
     ![score stars](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/stars.png)
     
   - Infinite scroll of card products
+  
+    ![infinite scroll](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/infinite%20scrolling.gif)
+    
   - Searchbar with search pointing system for porducts name and description
+  
+    ![searchbar](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/searchbar.png)
+    
   - Sort products by category
   - Sort products ascending or descending by price 
   - Product detail page
+  
+    ![product detail](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/product-cart.png)  
+      
   - Two methods to add product to shopping cart
   
     ![two methods](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/two%20options%20to%20add.png)
@@ -61,6 +70,8 @@ Products reviews are fetched from: [DummyJSON API](https://dummyjson.com/ "click
   - Popovers showing up when you want to remove single product or all products.
     
     ![popover](https://github.com/helter88/joom_copy_e-commerce/blob/main/readme_images/remove%20all%20popover.gif)
+    
+  - Dropdown menu
   
 ## Built using
 
@@ -69,5 +80,6 @@ Products reviews are fetched from: [DummyJSON API](https://dummyjson.com/ "click
   - Tailwind CSS
   - React Query
   - React Router v6
+  - React Custom Hooks
   - [Platzi Fake Store API](https://fakeapi.platzi.com/ "click to visit API website")
   - [DummyJSON API](https://dummyjson.com/ "click to visit API website")
