@@ -13,7 +13,6 @@ const SingleProduct = () => {
   const location = useLocation()
 
   const score = location?.state?.score
-  console.log(location)
   return (
     <>
       <div className='grid grid-cols-2 mt-2 pt-5'>

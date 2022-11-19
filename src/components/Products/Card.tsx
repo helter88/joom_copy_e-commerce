@@ -31,7 +31,6 @@ const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
   return (
     <Link className="w-1/5 pb-8 cursor-pointer"
       to={`/product/${id}`}  target="_blank"
-      state={{score: 'Nie wyświetla'}}
     >
         <div className='overflow-hidden rounded-xl'>
            <img className='rounded-xl hover:scale-110 transition-all duration-500' src={imageSource || noImagePath} alt='product photo' onError={onImageError} /> 
