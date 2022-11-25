@@ -55,14 +55,14 @@ const ProductsList = () => {
 
   const allProducts = dataSliced?.map(({title, price, images, id}:ResponseProduct) => <Card key={id} price={`PLN ${price}`} title={title} imageSource={images[0]} id={id}/>)
   return (
-    <div className="mt-2 pt-5 flex flex-col min-w-[50rem]">
-      <main className="mx-auto w-4/5 flex flex-wrap gap-x-5">
+    <div className="mt-2 pt-5 flex flex-col md:min-w-[50rem]">
+      <main className="md:mx-auto md:w-4/5 flex justify-center md:justify-start flex-wrap md:gap-x-5 gap-x-3">
        {allProducts}
       </main>
       { numProducts === 20 &&
         <ShowMoreButton onClickHandler={onClickHandler} />
       }
-      { numProducts >20 && <div className='self-center pt-8 pb-20 mr-28' 
+      { numProducts >20 && <div className='self-center pt-8 pb-20 lg:mr-28' 
       ref={targetRef}> No more products to display</div>}
     </div>
     

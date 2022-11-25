@@ -29,7 +29,7 @@ const Card: React.FC<CardData> = ({price, title, imageSource, id}) => {
  
  
   return (
-    <Link className="w-1/5 pb-8 cursor-pointer"
+    <Link className="md:w-1/5 pb-8 cursor-pointer w-48"
       to={`/product/${id}`}  target="_blank"
     >
         <div className='overflow-hidden rounded-xl'>

@@ -6,12 +6,12 @@ const Navigation = () => {
     <div className="pt-3 flex items-center justify-between">
       <div className="flex">
         <ChooseLanguage />
-        <div className="ml-6">
+        <div className="md:ml-6">
           <Currency/>
         </div>
       </div>
       
-      <div className="space-x-8 text-xs text-gray-400 ">
+      <div className="ml-5 sm:ml-0 space-x-3 sm:space-x-8 text-xs text-gray-400 ">
         <a className="cursor-pointer hover:border-b hover:border-b-gray-400 ">Support</a>
         <a className="cursor-pointer hover:border-b  hover:border-b-gray-400">Delivery</a>
         <a className="cursor-pointer hover:border-b  hover:border-b-gray-400">Warranty</a>

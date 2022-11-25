@@ -48,16 +48,19 @@ const Header = () => {
   navigate('/')
  }
   return (
-    <div className='my-12 flex items-center'>
-      <div className='first-line mr-10 cursor-pointer'
+    <div className='my-12 lg:flex lg:items-center lg:flex-nowrap
+      flex flex-wrap justify-between'>
+      <div className='first-line lg:mr-10 cursor-pointer order-1 lg:order-1
+        sm:mb-0 mb-8'
         onClick ={onCLickLogoHandler}>
         <Logo />
       </div>
-      <div className='w-full'>
+      <div className='w-full order-3 lg:order-2'>
         <SearchBar />
       </div>
       
-      <div className='flex space-x-8 ml-10'>
+      <div className='flex space-x-4 sm:space-x-8 lg:ml-10 order-2 mb-8
+          lg:order-3 lg:mb-0'>
         <FunctionalIcon text='Notyfications' icon='bell'/>
         <FunctionalIcon text='Sign in' icon='person'/>
         <FunctionalIcon text='My orders' icon='box'/>

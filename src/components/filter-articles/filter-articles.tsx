@@ -9,7 +9,7 @@ const FilterArticles = () => {
 
   const onClickHandler = () => toggle()
   return (
-    <div className="mt-20 pt-5 mx-auto w-4/5">
+    <div className="mt-10 md:mt-20 pt-5 mx-auto w-4/5">
       <div className="relative" ref={elementRef}>
         <FilterButton onClickHandler={onClickHandler} />
         <FilterButtonMenu options={['By default','Ascending price', 'Descending price']}
