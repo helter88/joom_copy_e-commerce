@@ -1,37 +1,33 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from "react";
 
 const getStorageValue = () => {
-    const saved = localStorage.getItem('products') as string
-    const initial = JSON.parse(saved);
-    return initial || []
-  }
+  const saved = localStorage.getItem("products") as string;
+  const initial = JSON.parse(saved);
+  return initial || [];
+};
 
 const useChosenProducts = () => {
-    const [products, setProducts] = useState(() => {
-        return getStorageValue();
-      });
+  const [products, setProducts] = useState(() => {
+    return getStorageValue();
+  });
 
-      // useEffect(() => {
-      //   const handleStorage = () => {
-      //     getStorageValue();
-          
-      //   }
-      //   console.log('from eventlistener')
-      //   window.addEventListener('storage', handleStorage)
-      //   return () => window.removeEventListener('storage', handleStorage)
-      // }, [products, setProducts])
+  // useEffect(() => {
+  //   const handleStorage = () => {
+  //     getStorageValue();
 
-      useEffect(() => {
-        
-        localStorage.setItem('products', JSON.stringify(products));
-        window.dispatchEvent(new Event('storage'))
-        console.log("info from dispatch")
-      }, [products]);
+  //   }
+  //   console.log('from eventlistener')
+  //   window.addEventListener('storage', handleStorage)
+  //   return () => window.removeEventListener('storage', handleStorage)
+  // }, [products, setProducts])
 
-     
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+    window.dispatchEvent(new Event("storage"));
+    console.log("info from dispatch");
+  }, [products]);
 
-  return [products, setProducts]
-  
-}
+  return [products, setProducts];
+};
 
-export default useChosenProducts
+export default useChosenProducts;

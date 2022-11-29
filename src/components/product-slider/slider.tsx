@@ -1,31 +1,27 @@
-import React, { useState } from 'react'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Navigation, Thumbs} from 'swiper';
-import './slider.css'
-import { onImageError } from '../products/card';
-import useSingleProduct from '../../hooks/use-single-product';
-import SwiperCore  from 'swiper';
-
-
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs } from "swiper";
+import "./slider.css";
+import { onImageError } from "../products/card";
+import useSingleProduct from "../../hooks/use-single-product";
+import SwiperCore from "swiper";
 
 const Slider = () => {
-    const {product} = useSingleProduct()
+  const { product } = useSingleProduct();
 
-    const [activeThumb, setActiveThumb]= useState<SwiperCore>()
+  const [activeThumb, setActiveThumb] = useState<SwiperCore>();
 
-    const displayPhotos = product?.images?.map((image: string, index:number)=>(
-        <SwiperSlide key={index} >
-            <img src ={image} alt="product photo" onError={onImageError}/>
-        </SwiperSlide>
-    )
-    
-    )
+  const displayPhotos = product?.images?.map((image: string, index: number) => (
+    <SwiperSlide key={index}>
+      <img src={image} alt="product photo" onError={onImageError} />
+    </SwiperSlide>
+  ));
 
-    // const numDisplay = product.images.length || 2
+  // const numDisplay = product.images.length || 2
 
   return (
     <>
-      <Swiper 
+      <Swiper
         spaceBetween={10}
         navigation={true}
         modules={[Navigation, Thumbs]}
@@ -33,12 +29,11 @@ const Slider = () => {
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
-        className='product-main'
-
+        className="product-main"
       >
         {displayPhotos}
       </Swiper>
-      <Swiper 
+      <Swiper
         direction={"vertical"}
         onSwiper={setActiveThumb}
         loop={true}
@@ -47,12 +42,11 @@ const Slider = () => {
         slidesPerView={2}
         modules={[Navigation, Thumbs]}
         className="product-bottom"
-
       >
         {displayPhotos}
       </Swiper>
     </>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

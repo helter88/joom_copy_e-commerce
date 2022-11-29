@@ -10,6 +10,6 @@
 // });
 
 // export const CategoriesContextProvider = ({children}: CategoriesContextProviderProps ) => {
-//     return <CategoriesContext.Provider value={''}> {children} </CategoriesContext.Provider>  
+//     return <CategoriesContext.Provider value={''}> {children} </CategoriesContext.Provider>
 // }
 export const a = 0;

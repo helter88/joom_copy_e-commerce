@@ -1,35 +1,35 @@
-.product-main .swiper-slide{
-    overflow: hidden;
+.product-main .swiper-slide {
+  overflow: hidden;
 }
 
 .product-main .swiper-slide img {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .product-main .swiper-button-prev {
-    color: black;
+  color: black;
 }
 
 .product-main .swiper-button-next {
-    color: black;
+  color: black;
 }
 
-.product-bottom .swiper-slide{
-    cursor: pointer;
+.product-bottom .swiper-slide {
+  cursor: pointer;
 }
 
-.product-bottom .swiper-slide-thumb-active{
-    cursor: pointer;
+.product-bottom .swiper-slide-thumb-active {
+  cursor: pointer;
 }
 
 .product-bottom {
-    margin-right: 20px;
-    width: 40%;
-    height: 150px;
-    overflow: hidden;
+  margin-right: 20px;
+  width: 40%;
+  height: 150px;
+  overflow: hidden;
 }
 
-.product-bottom img{
-    border-radius: 10px;
+.product-bottom img {
+  border-radius: 10px;
 }
