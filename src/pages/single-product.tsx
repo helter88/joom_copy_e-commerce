@@ -13,11 +13,11 @@ const SingleProduct = () => {
   const score = location?.state?.score;
   return (
     <>
-      <div className="grid grid-cols-2 mt-2 pt-5">
+      <div className="md:grid md:grid-cols-2 mt-2 pt-5">
         <div className="flex flex-row-reverse ">
           <Slider />
         </div>
-        <div className="lg:ml-28 ml-10">
+        <div className="lg:ml-28 ml-10 mt-6 md:mt-0">
           <ProductInfo />
         </div>
       </div>

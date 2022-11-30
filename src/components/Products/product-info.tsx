@@ -28,7 +28,7 @@ function ProductInfo() {
         <p className="ml-2 text-base text-slate-400">{dynamicScore}</p>
       </div>
       <p className="text-4xl mt-8">PLN {product?.price}</p>
-      <div className="my-8 space-x-3">
+      <div className="my-8 space-x-3 space-y-3 sm:space-y-0">
         <AddToCartButton productID={product?.id} />
         <BuyNowButton productID={product?.id} />
       </div>
