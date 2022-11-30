@@ -50,7 +50,7 @@ const CartPanel = () => {
   return (
     <div
       className="flex justify-between my-4
-    bg-white sm:p-5 rounded-xl"
+    bg-white p-5 rounded-xl"
     >
       <div className="flex relative">
         <div className="flex items-center gap-x-2">

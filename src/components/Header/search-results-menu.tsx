@@ -72,9 +72,8 @@ const SearchResultsMenu: React.FC<MenuType> = ({ inputText, setInputText }) => {
 
   return (
     <div
-      className={`absolute ${
-        isOpen ? "" : "hidden"
-      } py-2 z-10 bg-white rounded-xl w-max 
+      className={`absolute ${isOpen ? "" : "hidden"
+        } py-2 z-10 bg-white rounded-xl w-fit 
      border-slate-100 shadow-sm shadow-black
     text-sm font-normal whitespace-nowrap text-gray-600`}
     >
