@@ -54,6 +54,8 @@ const CartProduct = ({ checked, id, quantity }: ChosenProductType) => {
           />
           <div className="flex flex-col justify-between h-full">
             <p className="text-sm">{product?.title}</p>
+            <p className="text-base font-medium sm:invisible">{`PLN ${quantity * product?.price
+              }`}</p>
             <div className="flex gap-x-0.5">
               <QuantityManager quantity={quantity} id={id} />
               <div className="relative flex">
@@ -70,9 +72,8 @@ const CartProduct = ({ checked, id, quantity }: ChosenProductType) => {
         </div>
       </div>
       <div>
-        <p className="text-base font-medium">{`PLN ${
-          quantity * product?.price
-        }`}</p>
+        <p className="text-base font-medium invisible sm:visible ">{`PLN ${quantity * product?.price
+          }`}</p>
       </div>
     </div>
   );

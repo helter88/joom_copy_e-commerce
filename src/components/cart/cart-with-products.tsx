@@ -22,14 +22,14 @@ const CartWithProducts = () => {
     <>
       <div className="px-4  2xl:px-56 xl:px-48 lg:px-28 md:px-10">
         <p className="text-2xl font-medium mt-8 mb-3">My cart</p>
-        <div className="grid grid-cols-3 gap-x-8">
-          <div className="col-span-2 ">
+        <div className="md:grid md:grid-cols-3 md:gap-x-8">
+          <div className="md:col-span-2 ">
             <CartPanel />
             <div className=" my-4 bg-white p-5 rounded-xl">
               {allCartProducts}
             </div>
           </div>
-          <div className="col-span-1">
+          <div className="md:col-span-1">
             <YourCart />
           </div>
         </div>

@@ -28,7 +28,7 @@ const RemoveAllPopover: React.FC<RemoveAllPopoverType> = ({
 
   return (
     <div
-      className={`absolute left-64 -top-8 bg-white border shadow p-3
+      className={`absolute xl:left-5 2xl:left-64 -top-8 bg-white border shadow p-3
          shadow-slate-200 z-10 rounded-lg w-max 
          flex flex-col items-center ${activeStyle} transition-all
          before:w-0 before:h-0 before:border-[10px] before:border-transparent
